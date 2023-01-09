@@ -1,8 +1,7 @@
 #pragma once
-#include "../../Utils/Utils.h"
-#include "../../Mem/Mem.h"
+#include "Player.h"
 
 class ClientInstance {
 public:
-	//
+	auto getPlayer(void) -> LocalPlayer*;
 };

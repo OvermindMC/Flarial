@@ -143,6 +143,7 @@
     <ClCompile Include="Client\Client.cpp" />
     <ClCompile Include="Client\Manager\Manager.cpp" />
     <ClCompile Include="Client\Mem\Mem.cpp" />
+    <ClCompile Include="Client\SDK\Classes\ClientInstance.cpp" />
     <ClCompile Include="Client\SDK\Minecraft.cpp" />
     <ClCompile Include="Client\Utils\Utils.cpp" />
     <ClCompile Include="Flarial.cpp" />
@@ -151,7 +152,9 @@
     <ClInclude Include="Client\Client.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\Mem\Mem.h" />
+    <ClInclude Include="Client\SDK\Classes\Actor.h" />
     <ClInclude Include="Client\SDK\Classes\ClientInstance.h" />
+    <ClInclude Include="Client\SDK\Classes\Player.h" />
     <ClInclude Include="Client\SDK\Minecraft.h" />
     <ClInclude Include="Client\Utils\Utils.h" />
   </ItemGroup>
