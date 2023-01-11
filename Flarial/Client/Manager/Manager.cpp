@@ -1,7 +1,10 @@
 #include "Manager.h"
-#include "Category/Module/Module.h"
+
+/* Module Includes */
 
 #include "Category/Module/Modules/Misc/TestMod.h"
+
+/* Manager Constructor */
 
 Manager::Manager(Client* c) {
 
