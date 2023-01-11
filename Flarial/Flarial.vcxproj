@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -141,6 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Client\Client.cpp" />
+    <ClCompile Include="Client\Manager\Category\Category.cpp" />
+    <ClCompile Include="Client\Manager\Category\Module\Module.cpp" />
     <ClCompile Include="Client\Manager\Manager.cpp" />
     <ClCompile Include="Client\Mem\Mem.cpp" />
     <ClCompile Include="Client\SDK\Classes\ClientInstance.cpp" />
@@ -150,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Client.h" />
+    <ClInclude Include="Client\Manager\Category\Category.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Module.h" />
+    <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\Mem\Mem.h" />
     <ClInclude Include="Client\SDK\Classes\Actor.h" />
