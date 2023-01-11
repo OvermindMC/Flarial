@@ -1,6 +1,5 @@
 #pragma once
 #include <type_traits>
-#include <WinSock2.h>
 #include <functional>
 #include <Windows.h>
 #include <string>
