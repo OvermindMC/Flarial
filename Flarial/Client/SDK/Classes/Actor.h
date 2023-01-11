@@ -115,4 +115,34 @@ public:
 	virtual auto getNameTag(void) -> std::string const&;
 	virtual auto getNameTagAsHash(void) -> class HashedString*;
 	virtual auto getFormattedNameTag(void) -> std::string const&;
+	virtual auto filterFormattedNameTag(class UIProfanityContext*) -> void;
+	virtual auto setNameTag(std::string const&) -> void;
+public:
+	virtual auto getAlwaysShowNameTag(void) -> bool;
+public:
+	virtual auto setScoreTag(std::string const&) -> void;
+	virtual auto getScoreTag(void) -> std::string const&;
+public:
+	virtual auto isInWater(void) -> bool;
+	virtual auto hasEnteredWater(void) -> bool;
+	virtual auto isInLava(class IConstBlockSource*) -> bool;
+	virtual auto isUnderLiquid(enum MaterialType) -> bool;
+	virtual auto isOverWater(void) -> bool;
+public:
+	virtual auto setBlockMovementSlowdownMultiplier(class BlockLegacy*, Vec3<float>*) -> void;
+	virtual auto resetBlockMovementSlowdownMultiplier(void) -> void;
+public:
+	virtual auto getCameraOffset(void) -> float;
+	virtual auto getShadowHeightOffs(void) -> float;
+	virtual auto getShadowRadius(void) -> float;
+	virtual auto getHeadLookVector(float) -> Vec3<float>;
+public:
+	virtual auto canSeeInvisible(void) -> bool; /* Spectator, function detour see spectators? */
+	virtual auto canSee(Vec3<float>*) -> bool;
+	virtual auto canSee(Actor*) -> bool;
+public:
+	virtual auto canInteractWithOtherEntitiesInGame(void) -> bool;
+public:
+	virtual auto isSkyLit(float) -> bool;
+	virtual auto getBrightness(float) -> float;
 };
