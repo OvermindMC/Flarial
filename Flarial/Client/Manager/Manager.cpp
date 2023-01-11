@@ -1,6 +1,8 @@
 #include "Manager.h"
 #include "Category/Module/Module.h"
 
+#include "Category/Module/Modules/Misc/TestMod.h"
+
 Manager::Manager(Client* c) {
 
 	this->client = c;
@@ -11,6 +13,8 @@ Manager::Manager(Client* c) {
 		this->categories[type] = new Category(this, type);
 
 	};
+
+	new TestMod(this);
 
 	for (;;) {
 
