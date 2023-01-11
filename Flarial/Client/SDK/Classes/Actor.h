@@ -145,4 +145,14 @@ public:
 public:
 	virtual auto isSkyLit(float) -> bool;
 	virtual auto getBrightness(float) -> float;
+public:
+	virtual auto interactPreventDefault(void) -> void;
+	virtual auto playerTouch(class Player*) -> void;
+public:
+	virtual auto onAboveBubbleColumn(bool) -> void;
+	virtual auto onInsideBubbleColumn(bool) -> void;
+public:
+	virtual auto isImmobile(void) -> bool;
+	virtual auto isSilent(void) -> bool;
+	virtual auto _doSprintParticleEffect(void) -> void;
 };
