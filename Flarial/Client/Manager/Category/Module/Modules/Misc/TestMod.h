@@ -9,10 +9,18 @@ public:
 
 		registerEvent<ModuleEventArgs>([&](ModuleEventArgs* args) {
 
-			if (args->isTicking && args->isEnabled) {
+			if (args->isTicking) {
 
 				if (MC::getLocalPlayer())
 					MC::getLocalPlayer()->isOnGround = true;
+
+			}
+			else {
+
+				auto tpPos = Vec3<float>(10.f, 20.f, 30.f);
+
+				if (MC::getLocalPlayer())
+					MC::getLocalPlayer()->setPos(&tpPos);
 
 			};
 
