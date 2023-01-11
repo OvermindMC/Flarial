@@ -13,3 +13,9 @@ auto MC::getClientInstance(void) -> ClientInstance* {
 	return ((ClientInstance*)Mem::findMultiLvlPtr(basePtr, { 0x0, 0x48, 0x0 }, true));
 
 };
+
+auto MC::getLocalPlayer(void) -> LocalPlayer* {
+
+	return getClientInstance()->getPlayer();
+
+};
