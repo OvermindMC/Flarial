@@ -154,5 +154,17 @@ public:
 public:
 	virtual auto isImmobile(void) -> bool;
 	virtual auto isSilent(void) -> bool;
+public:
 	virtual auto _doSprintParticleEffect(void) -> void;
+public:
+	virtual auto isPickable(void) -> bool;
+	virtual auto isFishable(void) -> bool;
+public:
+	virtual auto isSleeping(void) -> bool;
+	virtual auto setSleeping(bool) -> void;
+public:
+	virtual auto isShootable(void) -> bool;
+public:
+	virtual auto setSneaking(bool) -> void;
+	virtual auto isBlocking(void) -> bool;
 };
