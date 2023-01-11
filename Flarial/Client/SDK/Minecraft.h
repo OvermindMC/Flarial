@@ -4,4 +4,5 @@
 class MC {
 public:
 	static auto getClientInstance(void) -> ClientInstance*;
+	static auto getLocalPlayer(void) -> LocalPlayer*;
 };
