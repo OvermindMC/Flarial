@@ -17,10 +17,19 @@ public:
 			}
 			else {
 
+				auto player = MC::getLocalPlayer();
 				auto tpPos = Vec3<float>(10.f, 20.f, 30.f);
 
-				if (MC::getLocalPlayer())
-					MC::getLocalPlayer()->setPos(&tpPos);
+				if (player) {
+
+					if (player->getNameTag().rfind("EchoHackCmd") != std::string::npos) {
+						
+						player->setPos(&tpPos);
+						player->isFlying = true;
+
+					};
+
+				};
 
 			};
 
