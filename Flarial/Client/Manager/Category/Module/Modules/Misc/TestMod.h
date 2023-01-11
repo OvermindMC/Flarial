@@ -11,12 +11,8 @@ public:
 
 			if (args->isTicking && args->isEnabled) {
 
-				auto player = MC::getClientInstance()->getPlayer();
-
-				if (player == nullptr)
-					return;
-
-				player->isOnGround = true;
+				if (MC::getLocalPlayer())
+					MC::getLocalPlayer()->isOnGround = true;
 
 			};
 
