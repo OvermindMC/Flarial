@@ -51,4 +51,32 @@ public:
 	virtual auto remove(void) -> void;
 public:
 	virtual auto setPos(Vec3<float>*) -> void;
+public:
+	virtual auto isRuntimePredictedMovementEnabled(void) -> bool;
+	virtual auto getPredictedMovementValues(void) -> class PredictedMovementValues*;
+public:
+	virtual auto getPosition(void) -> Vec3<float>*;
+	virtual auto getPosPrev(void) -> Vec3<float>*;
+	virtual auto getPosExtrapolated(float) -> const Vec3<float>;
+public:
+	virtual auto getAttachPos(enum ActorLocation, float) -> Vec3<float>;
+	virtual auto getFiringPos(void) -> Vec3<float>;
+public:
+	virtual auto move(class IActorMovementProxy*, Vec3<float>*) -> void;
+	virtual auto move(Vec3<float>*) -> void;
+public:
+	virtual auto getInterpolatedRidingPosition(float) -> Vec3<float>;
+public:
+	virtual auto getInterpolatedBodyRot(float) -> float;
+	virtual auto getInterpolatedHeadRot(float) -> float;
+	virtual auto getInterpolatedBodyYaw(float) -> float;
+	virtual auto getYawSpeedInDegreesPerSecond(void) -> float;
+	virtual auto getInterpolatedWalkAnimSpeed(float) -> float;
+	virtual auto getInterpolatedRidingOffset(float, int) -> Vec3<float>;
+	virtual auto resetInterpolated(void) -> void;
+public:
+	virtual auto updateEntityInside(void) -> void;
+	virtual auto updateEntityInside(AABB<float>*) -> void;
+public:
+	virtual auto isFireImmune(void) -> bool;
 };
