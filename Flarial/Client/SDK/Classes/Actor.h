@@ -108,4 +108,11 @@ public:
 	virtual auto isInWall(void) -> bool;
 	virtual auto isInvisible(void) -> bool;
 	virtual auto canShowNameTag(void) -> bool;
+public:
+	virtual auto canExistInPeaceful(void) -> bool;
+public:
+	virtual auto setNameTagVisible(bool) -> void;
+	virtual auto getNameTag(void) -> std::string const&;
+	virtual auto getNameTagAsHash(void) -> class HashedString*;
+	virtual auto getFormattedNameTag(void) -> std::string const&;
 };
