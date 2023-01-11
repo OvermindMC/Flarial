@@ -33,9 +33,6 @@
     <ClCompile Include="Client\SDK\Minecraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Client\SDK\Classes\ClientInstance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Client\Manager\Category\Category.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
