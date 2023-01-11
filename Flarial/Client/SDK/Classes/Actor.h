@@ -79,4 +79,33 @@ public:
 	virtual auto updateEntityInside(AABB<float>*) -> void;
 public:
 	virtual auto isFireImmune(void) -> bool;
+	virtual auto breaksFallingBlocks(void) -> bool;
+public:
+	virtual auto blockedByShield(class ActorDamageSource*, Actor*) -> void;
+	virtual auto canDisableShield(void) -> bool;
+public:
+	virtual auto teleportTo(Vec3<float>*, bool, int, int, bool) -> void;
+	virtual auto tryTeleportTo(Vec3<float>*, bool, int, int, bool) -> bool;
+	virtual auto chorusFruitTeleport(Vec3<float>*) -> void;
+public:
+	virtual auto lerpMotion(Vec3<float>*) -> void;
+public:
+	virtual auto tryCreateAddActorPacket(void) -> class Packet*;
+public:
+	virtual auto normalTick(void) -> void;
+	virtual auto baseTick(void) -> void;
+	virtual auto passengerTick(void) -> void;
+public:
+	virtual auto positionPassenger(Actor*, float) -> void;
+	virtual auto startRiding(Actor*) -> bool;
+	virtual auto addPassenger(Actor*) -> void;
+	virtual auto flagPassengerToRemove(Actor*) -> void;
+public:
+	virtual auto getExitTip(std::string const&, enum InputMode) -> void;
+	virtual auto getEntityLocNameString(void) -> std::string const&;
+public:
+	virtual auto intersects(Vec3<float>*, Vec3<float>*) -> bool;
+	virtual auto isInWall(void) -> bool;
+	virtual auto isInvisible(void) -> bool;
+	virtual auto canShowNameTag(void) -> bool;
 };
