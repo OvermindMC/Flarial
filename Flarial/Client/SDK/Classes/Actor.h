@@ -167,4 +167,21 @@ public:
 public:
 	virtual auto setSneaking(bool) -> void;
 	virtual auto isBlocking(void) -> bool;
+public:
+	virtual auto isDamageBlocked(class ActorDamageSource*) -> bool;
+public:
+	virtual auto isAlive(void) -> bool;
+	virtual auto isOnFire(void) -> bool;
+	virtual auto isOnHotBlock(void) -> bool;
+public:
+	virtual auto isCreativeModeAllowed(void) -> bool;
+public:
+	virtual auto isSurfaceMob(void) -> bool;
+public:
+	virtual auto isTargetable(void) -> bool;
+	virtual auto isLocalPlayer(void) -> bool;
+	virtual auto isRemotePlayer(void) -> bool;
+	virtual auto isPlayer(void) -> bool;
+public:
+	//
 };
