@@ -30,7 +30,7 @@ auto Mem::findSig(const char* signature) -> unsigned long long {
 
 	};
 
-	auto gameModule = (uintptr_t)(GetModuleHandleA("Minecraft.Windows.exe"));
+	auto gameModule = (unsigned long long)(GetModuleHandleA("Minecraft.Windows.exe"));
 	auto* const scanBytes = reinterpret_cast<uint8_t*>(gameModule);
 	auto* const dosHeader = reinterpret_cast<PIMAGE_DOS_HEADER>(gameModule);
 	auto* const ntHeaders = reinterpret_cast<PIMAGE_NT_HEADERS>(scanBytes + dosHeader->e_lfanew);
@@ -46,16 +46,16 @@ auto Mem::findSig(const char* signature) -> unsigned long long {
 			return !opt.has_value() || *opt == byte;
 		});
 
-	auto ret = it != end ? (uintptr_t)it : 0u;
+	auto ret = it != end ? (unsigned long long)it : 0u;
 	if (!ret)
 		return 0;
 
 	return ret;
 };
 
-auto Mem::findMultiLvlPtr(uintptr_t baseAddr, std::vector<unsigned int> offsets, bool basePure) -> uintptr_t {
+auto Mem::findMultiLvlPtr(unsigned long long baseAddr, std::vector<unsigned int> offsets, bool basePure) -> unsigned long long {
 
-	auto ptr = (uintptr_t)NULL;
+	auto ptr = (unsigned long long)NULL;
 	auto i = 0;
 
 	if (basePure) {
@@ -63,15 +63,15 @@ auto Mem::findMultiLvlPtr(uintptr_t baseAddr, std::vector<unsigned int> offsets,
 	}
 	else {
 		auto hwnd = GetModuleHandleA("Minecraft.Windows.exe");
-		ptr = (uintptr_t)(hwnd)+baseAddr;
+		ptr = (unsigned long long)(hwnd)+baseAddr;
 	};
 
 	do {
 
-		if (*(uintptr_t*)ptr + offsets[i] == offsets[i] || *(uintptr_t*)ptr + offsets[i] > 0xFFFFFFFFFFFF)
+		if (*(unsigned long long*)ptr + offsets[i] == offsets[i] || *(unsigned long long*)ptr + offsets[i] > 0xFFFFFFFFFFFF)
 			break;
 
-		ptr = *(uintptr_t*)ptr + offsets[i];
+		ptr = *(unsigned long long*)ptr + offsets[i];
 
 		if (ptr == NULL)
 			break;
