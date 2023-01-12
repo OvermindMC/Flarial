@@ -43,5 +43,5 @@ public:
 	static auto getDll(void) -> HMODULE;
 public:
 	static auto findSig(const char* szSignature) -> unsigned long long;
-	static auto findMultiLvlPtr(uintptr_t baseAddr, std::vector<unsigned int> offsets, bool basePure = false) -> uintptr_t;
+	static auto findMultiLvlPtr(uintptr_t baseAddr, std::vector<unsigned int> offsets, bool basePure = false) -> unsigned long long;
 };
