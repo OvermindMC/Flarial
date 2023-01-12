@@ -17,4 +17,6 @@ public:
 	Category(Manager*, CategoryType);
 public:
 	auto tick(void) -> void;
+public:
+	auto getName(void) -> std::string;
 };
