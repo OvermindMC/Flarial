@@ -1,12 +1,26 @@
 #pragma once
 #include <type_traits>
+#include <filesystem>
 #include <functional>
+#include <MinHook.h>
 #include <Windows.h>
+#include <typeindex>
+#include <fstream>
+#include <ostream>
 #include <string>
 #include <vector>
 #include <map>
 
 class Utils {
+public:
+	static std::string debugPath;
+public:
+	static auto getRoamPath(void) -> std::string;
+public:
+	static auto getDebugPath(void) -> std::string;
+	static auto setDebugPath(std::string) -> void;
+public:
+	static auto debugOutput(std::string) -> void;
 public:
 	template <unsigned int IIdx, typename TRet, typename... TArgs>
 	static inline auto CallVFunc(void* thisptr, TArgs... argList) -> TRet {
