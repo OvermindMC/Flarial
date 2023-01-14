@@ -4,7 +4,6 @@
 
 /* Module Includes */
 
-#include "Category/Module/Modules/Render/TabGui.h"
 #include "Category/Module/Modules/Misc/TestMod.h"
 
 /* Manager Constructor */
@@ -20,7 +19,6 @@ Manager::Manager(Client* c) {
 
 	};
 
-	new TabGui(this);
 	new TestMod(this);
 
 	MH_Initialize();
@@ -123,6 +121,13 @@ Manager::Manager(Client* c) {
 
 		}
 	);
+
+	new Hook<void, LoopbackPacketSender*, Packet*>(this, "LoopbackSend", Mem::findSig("48 89 5C 24 08 57 48 83 EC 20 48 8B D9 48 8B FA 48 8B 49 10"),
+		[&](LoopbackPacketSender* lp, Packet* packet){
+			
+			//
+			
+		});
 
 	for (;;) {
 
