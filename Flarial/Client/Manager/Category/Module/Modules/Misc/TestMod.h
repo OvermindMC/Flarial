@@ -7,6 +7,16 @@ public:
 
 		this->isEnabled = true;
 
+		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
+
+			auto instance = args->ctx->instance;
+			auto player = (instance != nullptr ? instance->getPlayer() : nullptr);
+
+			if (player)
+				player->setSprinting(true);
+
+		});
+
 		registerEvent<ModuleEventArgs>([&](ModuleEventArgs* args) {
 
 			auto player = MC::getLocalPlayer();
