@@ -36,6 +36,7 @@ public:
 struct KeyEvent {
     uint64_t key;
     bool isDown;
+    bool* cancel;
 };
 
 struct RenderCtxEvent {
