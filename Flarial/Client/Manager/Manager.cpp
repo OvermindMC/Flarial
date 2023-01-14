@@ -22,10 +22,7 @@ Manager::Manager(Client* c) {
 
 	MH_Initialize();
 
-	new Hook<void, uintptr_t*, uintptr_t*>(
-		this,
-		"RenderContext",
-		Mem::findSig("48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B ? 48 89 54 24 ? 4C"),
+	new Hook<void, uintptr_t*, uintptr_t*>(this, "RenderContext", Mem::findSig("48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B ? 48 89 54 24 ? 4C"),
 		[&](uintptr_t* p1, uintptr_t* ctx) {
 
 			auto _this = getHook<void, uintptr_t*, uintptr_t*>("RenderContext");
@@ -41,10 +38,7 @@ Manager::Manager(Client* c) {
 		}
 	);
 
-	new Hook<void, uint64_t, bool>(
-		this,
-		"KeyHook",
-		Mem::findSig("48 ? ? 48 ? ? ? 4C 8D 05 ? ? ? ? 89"),
+	new Hook<void, uint64_t, bool>(this, "KeyHook", Mem::findSig("48 ? ? 48 ? ? ? 4C 8D 05 ? ? ? ? 89"),
 		[&](uint64_t key, bool isDown) {
 
 			auto _this = getHook<void, uint64_t, bool>("KeyHook");
