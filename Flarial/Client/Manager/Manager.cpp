@@ -4,6 +4,7 @@
 
 /* Module Includes */
 
+#include "Category/Module/Modules/Render/TabGui.h"
 #include "Category/Module/Modules/Misc/TestMod.h"
 
 /* Manager Constructor */
@@ -19,6 +20,7 @@ Manager::Manager(Client* c) {
 
 	};
 
+	new TabGui(this);
 	new TestMod(this);
 
 	MH_Initialize();
@@ -96,6 +98,7 @@ Manager::Manager(Client* c) {
 	new Hook<void, uint64_t, bool>(this, "KeyHook", Mem::findSig("48 ? ? 48 ? ? ? 4C 8D 05 ? ? ? ? 89"),
 		[&](uint64_t key, bool isDown) {
 
+			auto cancel = false;
 			auto _this = getHook<void, uint64_t, bool>("KeyHook");
 			
 			if(_this) {
@@ -107,13 +110,14 @@ Manager::Manager(Client* c) {
 					for (auto mod : category->modules) {
 
 						if (mod->isEnabled)
-							mod->callEvent<KeyEvent>(KeyEvent{ key, isDown });
+							mod->callEvent<KeyEvent>(KeyEvent{ key, isDown, &cancel });
 
 					};
 
 				};
 
-				_this->_Func(key, isDown);
+				if(!cancel)
+					_this->_Func(key, isDown);
 
 			};
 
