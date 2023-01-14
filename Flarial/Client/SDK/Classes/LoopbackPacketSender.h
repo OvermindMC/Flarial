@@ -21,6 +21,30 @@ public:
 	BUILD_ACCESS(this, std::string, serverIp, 0x438);
 public:
 	AS_FIELD(std::string, serverStaticIp, getServerStaticIp);
+private:
+	virtual ~RaknetInstance(void);
+public:
+	virtual auto getLocalIps(void) -> std::vector<std::string>;
+	virtual auto getPort(void) -> unsigned __int16;
+	virtual auto getRefinedLocalIps(void) -> std::vector<__int64*>;
+	virtual auto getConnectedGameInfo(void) -> class GameConnectionInfo*;
+	virtual auto setupNatPunch(bool) -> void;
+	virtual auto getNatPunchInfo(void) -> class NatPunchInfo*;
+	virtual auto startNatPunchingClient(std::string const&, unsigned short) -> void;
+	virtual auto addConnectionStateListener(class ConnectionStateListener*) -> void;
+	virtual auto removeConnectionStateListener(class ConnectionStateListener*) -> void;
+	virtual auto isIPv4Supported(void) -> bool;
+	virtual auto isIPv6Supported(void) -> bool;
+	virtual auto getIPv4Port(void) -> unsigned __int16;
+	virtual auto getIPv6Port(void) -> unsigned __int16;
+	virtual auto host(class ConnectionDefinition*) -> bool;
+	virtual auto connect(class GameConnectionInfo*, class GameConnectionInfo*) -> bool;
+	virtual auto disconnect(void) -> void;
+	virtual auto tick(void) -> void;
+	virtual auto runEvents(void) -> void;
+	virtual auto isServer(void) -> bool;
+	virtual auto closeNetworkConnection(class NetworkConnection*) -> void;
+	virtual auto getTransportIdentifier(void) -> unsigned __int64;
 };
 
 class Raknet {
