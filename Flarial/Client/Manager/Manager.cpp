@@ -1,5 +1,6 @@
 #include "Manager.h"
 #include "Hook/Hook.h"
+#include "Category/Category.h"
 
 /* Module Includes */
 
@@ -45,8 +46,20 @@ Manager::Manager(Client* c) {
 			
 			if(_this) {
 
-				if (key != VK_ESCAPE)
-					_this->_Func(key, isDown);
+				this->keyMap[key] = isDown;
+
+				for (auto [type, category] : this->categories) {
+
+					for (auto mod : category->modules) {
+
+						if (mod->isEnabled)
+							mod->callEvent<KeyEvent>(KeyEvent{ key, isDown });
+
+					};
+
+				};
+
+				_this->_Func(key, isDown);
 
 			};
 
