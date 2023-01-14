@@ -5,7 +5,7 @@ class TestMod : public Module {
 public:
 	TestMod(Manager* mgr) : Module(mgr->categories[CategoryType::MISC], "TestMod") {
 
-		this->isEnabled = true;
+		//this->isEnabled = true;
 
 		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
 
