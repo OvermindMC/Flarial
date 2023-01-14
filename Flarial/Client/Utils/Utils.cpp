@@ -60,3 +60,29 @@ auto Utils::debugOutput(std::string output) -> void {
 	return fStream.close();
 
 };
+
+auto Utils::isValidDomain(std::string str) -> bool {
+
+	// Regex to check valid domain name.
+	const std::regex pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$");
+
+	// If the domain name
+	// is empty return false
+
+	if (str.empty()) {
+		return false;
+	}
+
+	// Return true if the domain name
+	// matched the ReGex
+
+	if (std::regex_match(str, pattern)) {
+		return true;
+	}
+	else {
+		return false;
+	};
+
+	return false;
+
+};
