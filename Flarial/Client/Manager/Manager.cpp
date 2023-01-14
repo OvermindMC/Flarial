@@ -42,7 +42,7 @@ Manager::Manager(Client* c) {
 		[&](uint64_t key, bool isDown) {
 
 			auto _this = getHook<void, uint64_t, bool>("KeyHook");
-
+			
 			if(_this) {
 
 				if (key != VK_ESCAPE)
