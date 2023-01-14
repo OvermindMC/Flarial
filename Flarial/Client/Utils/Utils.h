@@ -9,6 +9,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
+#include <regex>
 #include <map>
 
 class Utils {
@@ -21,6 +22,8 @@ public:
 	static auto setDebugPath(std::string) -> void;
 public:
 	static auto debugOutput(std::string) -> void;
+public:
+	static auto isValidDomain(std::string) -> bool;
 public:
 	template <unsigned int IIdx, typename TRet, typename... TArgs>
 	static inline auto CallVFunc(void* thisptr, TArgs... argList) -> TRet {
