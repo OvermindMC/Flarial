@@ -155,6 +155,7 @@
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\TestMod.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
+    <ClInclude Include="Client\Manager\Hook\Hook.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\Mem\Mem.h" />
     <ClInclude Include="Client\SDK\Classes\Actor.h" />
