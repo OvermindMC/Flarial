@@ -86,3 +86,24 @@ auto Utils::isValidDomain(std::string str) -> bool {
 	return false;
 
 };
+
+auto Utils::reachOff(float* x, float xOff, float modifier) -> void {
+
+	if (*x < xOff) {
+
+		if (*x < (xOff - modifier))
+			*x += modifier;
+		else
+			*x = xOff;
+
+	}
+	else if (*x > xOff) {
+
+		if (*x > (xOff + modifier))
+			*x -= modifier;
+		else
+			*x = xOff;
+
+	};
+
+};
