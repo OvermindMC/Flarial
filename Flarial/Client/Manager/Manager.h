@@ -13,6 +13,11 @@ public:
 	std::map<enum CategoryType, class Category*> categories;
 	std::vector<__int64*> hooks;
 public:
+	std::map<uint64_t, bool> keyMap;
+	auto isUsingKey(uint64_t key) -> bool {
+		return (keyMap.contains(key) ? keyMap[key] : false);
+	};
+public:
 	Manager(Client*);
 public:
 	template<typename T, typename... TArgs>
