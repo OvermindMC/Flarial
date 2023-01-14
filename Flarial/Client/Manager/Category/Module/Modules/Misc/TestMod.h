@@ -17,7 +17,9 @@ public:
 
 			if (rak) {
 
-				Utils::debugOutput(rak->serverName);
+				for (auto ip : rak->getLocalIps())
+					Utils::debugOutput(ip);
+
 				this->isEnabled = false;
 
 			};
