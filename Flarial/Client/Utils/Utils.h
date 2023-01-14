@@ -25,6 +25,8 @@ public:
 public:
 	static auto isValidDomain(std::string) -> bool;
 public:
+	static auto reachOff(float*, float, float) -> void;
+public:
 	template <unsigned int IIdx, typename TRet, typename... TArgs>
 	static inline auto CallVFunc(void* thisptr, TArgs... argList) -> TRet {
 		using Fn = TRet(__thiscall*)(void*, decltype(argList)...);
