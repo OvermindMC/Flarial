@@ -89,10 +89,10 @@
     <ClInclude Include="Client\SDK\Classes\GuiData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h">
+    <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h">
+    <ClInclude Include="Client\SDK\Classes\Packet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
