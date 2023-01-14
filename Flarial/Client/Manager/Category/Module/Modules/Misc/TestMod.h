@@ -30,5 +30,26 @@ public:
 
 		});
 
+		registerEvent<KeyEvent>([&](KeyEvent* args) {
+
+			if(!args->isDown)
+				return;
+			
+			if (args->key == VK_SPACE) {
+
+				auto instance = MC::getClientInstance();
+				auto player = instance->getPlayer();
+
+				if (player) {
+
+					auto motion = Vec3<float>(0.f, 1.f, 0.f);
+					player->lerpMotion(&motion);
+
+				};
+
+			};
+
+		});
+
 	};
 };
