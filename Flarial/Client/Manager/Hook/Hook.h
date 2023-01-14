@@ -14,7 +14,7 @@ public:
 			callback(args...);
 	};
 public:
-	static inline std::function<T(TArgs...)> callback = [&](TArgs... args) -> T {};
+	static inline std::function<T(TArgs...)> callback = [&](TArgs... args) -> T { return (T)NULL; };
 	__int64* sig;
 public:
 	const char* name;
