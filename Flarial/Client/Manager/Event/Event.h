@@ -37,3 +37,7 @@ struct KeyEvent {
     uint64_t key;
     bool isDown;
 };
+
+struct RenderCtxEvent {
+    class MinecraftUIRenderContext* ctx;
+};

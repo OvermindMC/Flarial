@@ -51,5 +51,28 @@ public:
 
 		});
 
+		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
+
+			auto instance = args->ctx->instance;
+			auto font = (instance != nullptr ? instance->getMcGame()->mcFont : nullptr);
+
+			if (!font)
+				return;
+
+			auto fontSize = .8f;
+
+			TextMeasureData textMeasureData = TextMeasureData(fontSize);
+			CaretMeasureData caretMeasureData = CaretMeasureData();
+
+			auto text = std::string("Hello");
+			auto textPos = Vec2<float>(10.f, 10.f);
+			auto color = Color(255.f, 255.f, 255.f, 1.f);
+			auto textRect = Rect(textPos.x, textPos.x + (textPos.x * fontSize), textPos.y, textPos.y + (textPos.y * fontSize / 2));
+
+			args->ctx->drawText(font, textRect.get(), &text, color.get(), color.a, 0, &textMeasureData, &caretMeasureData);
+			args->ctx->flushText(0.f);
+
+		});
+
 	};
 };
