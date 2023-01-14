@@ -2,6 +2,20 @@
 #include "../../Utils/Utils.h"
 #include "../../Mem/Mem.h"
 
+class FilePath {
+private:
+    char pad[0x18];
+public:
+    const char* path;
+};
+
+class TexturePath {
+private:
+    char pad[0x18];
+public:
+    FilePath* filePath;
+};
+
 class TextMeasureData {
 public:
     float scale;
@@ -89,4 +103,27 @@ private:
 public:
     virtual auto drawRectangle(const float*, const float*, float, int) -> void;
     virtual auto fillRectangle(const float*, const float*, float) -> void;
+public:
+    auto drawText(class Font* font, std::string text, Vec2<float> textPos, Color color, float fontSize) -> void {
+
+        TextMeasureData textMeasureData = TextMeasureData(fontSize);
+        CaretMeasureData caretMeasureData = CaretMeasureData();
+
+        auto textRect = Rect(textPos.x, textPos.x + (textPos.x * fontSize), textPos.y, textPos.y + (textPos.y * fontSize / 2));
+        this->drawText(font, textRect.get(), &text, color.get(), color.a, 0, &textMeasureData, &caretMeasureData);
+
+    };
+public:
+    auto fillRectangle(Rect rect, Color color) -> void {
+
+        rect = Rect(rect.x, rect.z, rect.y, rect.w);
+        this->fillRectangle(rect.get(), color.get(), color.a);
+
+    };
+public:
+    auto drawRectangle(Rect rect, Color color, int lineWidth) -> void {
+
+        this->drawRectangle(rect.get(), color.get(), color.a, lineWidth);
+
+    };
 };
