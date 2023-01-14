@@ -1,6 +1,5 @@
 #pragma once
-#include "../../Utils/Utils.h"
-#include "../../Mem/Mem.h"
+#include "Packet.h"
 
 class RaknetInstance {
 public:
