@@ -10,10 +10,17 @@ public:
 		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
 
 			auto instance = args->ctx->instance;
-			auto player = (instance != nullptr ? instance->getPlayer() : nullptr);
+			auto lp = (instance != nullptr ? instance->getLpSender() : nullptr);
+			auto nh = (lp != nullptr ? lp->networkHandler : nullptr);
+			auto raknet = (nh != nullptr ? nh->raknet : nullptr);
+			auto rak = (raknet != nullptr ? raknet->instance : nullptr);
 
-			if (player)
-				player->setSprinting(true);
+			if (rak) {
+
+				Utils::debugOutput(rak->serverName);
+				this->isEnabled = false;
+
+			};
 
 		});
 
