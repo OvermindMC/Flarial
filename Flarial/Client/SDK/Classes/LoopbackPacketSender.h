@@ -66,7 +66,7 @@ public:
 	virtual auto sendToServer(class Packet*) -> void;
 	virtual auto sendToClient(class NetworkIdentifier const&, class Packet const&, enum SubClientId) -> void;
 	virtual auto sendToClient(class UserEntityIdentifierComponent*, class Packet*) -> void;
-	virtual auto sendToClients(class std::vector<class NetworkIdentifierWithSubId, class std::allocator<struct NetworkIdentifierWithSubId>> const&, class Packet const&) -> void;
+	virtual auto sendToClients(std::vector<class NetworkIdentifierWithSubId, class std::allocator<class NetworkIdentifierWithSubId>> const&, class Packet const&) -> void;
 	virtual auto sendBroadcast(class NetworkIdentifier*, enum SubClientId, class Packet*) -> void;
 	virtual auto sendBroadcast(class Packet*) -> void;
 	virtual auto flush(class NetworkIdentifier const&, class std::function<void(void)>&&) -> void;
