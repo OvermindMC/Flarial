@@ -95,6 +95,15 @@
     <ClInclude Include="Client\SDK\Classes\Packet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\ItemStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\PlayerInventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
