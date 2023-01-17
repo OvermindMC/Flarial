@@ -2,6 +2,10 @@
 #include "Actor.h"
 
 class LocalPlayer : public Actor {
+public:
+	auto getSupplies(void) -> PlayerInventory* {
+		return *(PlayerInventory**)((uintptr_t)(this) + 0xDB8);
+	};
 private:
 	virtual ~LocalPlayer(void);
 public:
