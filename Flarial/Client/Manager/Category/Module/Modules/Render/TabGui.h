@@ -42,5 +42,60 @@ public:
 
 		});
 
+		registerEvent<KeyEvent>([&](KeyEvent* args) {
+
+			if(alpha <= 0.f)
+				return;
+			
+			auto key = args->key;
+			auto isDown = args->isDown;
+
+			if (key != VK_UP && key != VK_DOWN && key != VK_LEFT && key != VK_RIGHT)
+				return;
+
+			*args->cancel = true;
+
+			if (!isDown)
+				return;
+
+			switch (key) {
+
+				case VK_UP:
+
+					if (selectedMod) {
+
+						//
+
+					}
+					else {
+
+						//
+
+					};
+
+				break;
+
+				case VK_DOWN:
+
+					//
+
+				break;
+
+				case VK_LEFT:
+
+					//
+
+				break;
+
+				case VK_RIGHT:
+
+					//
+
+				break;
+
+			};
+
+		});
+
 	};
 };
