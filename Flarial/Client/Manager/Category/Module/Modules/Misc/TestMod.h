@@ -5,7 +5,7 @@ class TestMod : public Module {
 public:
 	TestMod(Manager* mgr) : Module(mgr->categories[CategoryType::MISC], "TestMod") {
 
-		this->isEnabled = true;
+		//this->isEnabled = true;
 
 		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
 
@@ -18,6 +18,9 @@ public:
 			auto fontSize = 1.f;
 			auto len = args->ctx->getTextLength(font, &text, fontSize, false);
 
+			auto rect = Rect(textPos.x - 2.f, textPos.y - 2.f, (textPos.x + 2.f) + len, (textPos.y + 2.f) + (fontSize * 10.f));
+			args->ctx->fillRectangle(rect, Color(24.f, 24.f, 24.f));
+			
 			args->ctx->drawText(font, text, textPos, Color(255.f, 255.f, 255.f), fontSize);
 			args->ctx->flushText(0.f);
 			
