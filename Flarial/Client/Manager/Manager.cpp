@@ -4,6 +4,7 @@
 
 /* Module Includes */
 
+#include "Category/Module/Modules/Render/TabGui.h"
 #include "Category/Module/Modules/Misc/TestMod.h"
 
 /* Manager Constructor */
@@ -19,6 +20,7 @@ Manager::Manager(Client* c) {
 
 	};
 
+	new TabGui(this);
 	new TestMod(this);
 
 	MH_Initialize();
