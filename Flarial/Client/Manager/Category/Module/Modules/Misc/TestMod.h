@@ -5,11 +5,23 @@ class TestMod : public Module {
 public:
 	TestMod(Manager* mgr) : Module(mgr->categories[CategoryType::MISC], "TestMod") {
 
-		//this->isEnabled = true;
+		this->isEnabled = true;
 
 		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
 
 			auto instance = args->ctx->instance;
+			auto font = instance->getMcGame()->mcFont;
+			
+			auto text = this->category->manager->client->name;
+			auto textPos = Vec2<float>(10.f, 10.f);
+			
+			auto fontSize = 1.f;
+			auto len = args->ctx->getTextLength(font, &text, fontSize, false);
+
+			args->ctx->drawText(font, text, textPos, Color(255.f, 255.f, 255.f), fontSize);
+			args->ctx->flushText(0.f);
+			
+			/*auto instance = args->ctx->instance;
 			auto lp = (instance != nullptr ? instance->getLpSender() : nullptr);
 			auto nh = (lp != nullptr ? lp->networkHandler : nullptr);
 			auto raknet = (nh != nullptr ? nh->raknet : nullptr);
@@ -22,7 +34,7 @@ public:
 
 				this->isEnabled = false;
 
-			};
+			};*/
 
 		});
 
