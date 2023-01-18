@@ -182,5 +182,55 @@ public:
 	virtual auto isRemotePlayer(void) -> bool;
 	virtual auto isPlayer(void) -> bool;
 public:
-	//
+	virtual auto isAffectedByWaterBottle(void) -> bool;
+public:
+	virtual auto canAttack(Actor*, bool) -> bool;
+	virtual auto setTarget(Actor*) -> bool;
+	virtual auto isValidTarget(Actor*) -> bool;
+public:
+	virtual auto attack(Actor*, enum ActorDamageCause*) -> bool;
+	virtual auto performRangedAttack(Actor*, float) -> void;
+public:
+	virtual auto getEquipmentCount(void) -> __int64;
+public:
+	virtual auto setOwner(uint64_t) -> void;
+public:
+	virtual auto setSitting(bool) -> void;
+public:
+	virtual auto onTame(void) -> void;
+	virtual auto onFailedTame(void) -> void;
+public:
+	virtual auto getInventorySize(void) -> __int64;
+	virtual auto getEquipSlots(void) -> __int64;
+	virtual auto getChestSlots(void) -> __int64;
+public:
+	virtual auto setStanding(bool) -> void;
+public:
+	virtual auto canPowerJump(void) -> bool;
+	virtual auto setCanPowerJump(bool) -> void;
+	virtual auto isJumping(void) -> bool;
+public:
+	virtual auto isEnchanted(void) -> bool;
+public:
+	virtual auto vehicleLanded(Vec3<float>&, Vec3<float>&) -> void;
+public:
+	virtual auto shouldRender(void) -> bool;
+public:
+	virtual auto playAmbientSound(void) -> void;
+	virtual auto getAmbientSound(void) -> enum LevelSoundEvent;
+public:
+	virtual auto isInvulnerableTo(class ActorDamageSource*) -> bool;
+	virtual auto getBlockDamageCause(class Block&) -> enum ActorDamageCause;
+public:
+	virtual auto animateHurt(void) -> void;
+	virtual auto doFireHurt(int) -> void;
+public:
+	virtual auto onLightningHit(void) -> void;
+	virtual auto onBounceStarted(Vec3<int>&, class Block&) -> void;
+public:
+	virtual auto feed(int) -> void;
+public:
+	virtual auto handleEntityEvent(enum ActorEvent, int) -> void;
+public:
+	virtual auto getPickRadius(void) -> float;
 };
