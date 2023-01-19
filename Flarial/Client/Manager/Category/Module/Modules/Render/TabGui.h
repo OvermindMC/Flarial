@@ -37,7 +37,9 @@ public:
 			auto mgr = this->category->manager;
 			auto client = mgr->client;
 
-			args->ctx->drawText(font, client->name, Vec2<float>(10.f, 10.f), Color(255.f, 255.f, 255.f, alpha), 1.f);
+			auto startPos = Vec2<float>(10.f, 10.f);
+
+			args->ctx->drawText(font, client->name, startPos, Color(255.f, 255.f, 255.f, alpha), 1.f);
 			args->ctx->flushText(0.f);
 
 		});
@@ -58,18 +60,57 @@ public:
 			if (!isDown)
 				return;
 
+			auto mgr = this->category->manager;
+			auto category = mgr->categories[(CategoryType)this->currCategory];
+
 			switch (key) {
+
+				case VK_RIGHT:
+
+					if (!this->selectedCategory) {
+						this->selectedCategory = true;
+					}
+					else {
+						if (!this->selectedMod) {
+							this->selectedMod = true;
+						}
+						else {
+							auto mod = (category != nullptr && !category->modules.empty() ? category->modules.at(this->currModule) : nullptr);
+
+							if (mod)
+								mod->isEnabled = !mod->isEnabled;
+						};
+					};
+
+				break;
+
+				case VK_LEFT:
+
+					if (this->selectedMod) {
+						this->selectedMod = false;
+					}
+					else if (this->selectedCategory) {
+						this->selectedCategory = false;
+					};
+
+				break;
 
 				case VK_UP:
 
-					if (selectedMod) {
+					if (this->selectedMod) {
 
-						//
+						if (this->currModule <= 0)
+							this->currModule = category->modules.size();
+
+						this->currModule--;
 
 					}
-					else {
+					else if (this->selectedCategory) {
 
-						//
+						if (this->currCategory <= 0)
+							this->currCategory = mgr->categories.size();
+
+						this->currCategory--;
 
 					};
 
@@ -77,19 +118,22 @@ public:
 
 				case VK_DOWN:
 
-					//
+					if (this->selectedMod) {
 
-				break;
+						this->currModule++;
 
-				case VK_LEFT:
+						if (this->currModule >= category->modules.size())
+							this->currModule = 0;
 
-					//
+					}
+					else if (this->selectedCategory) {
 
-				break;
+						this->currCategory++;
 
-				case VK_RIGHT:
+						if (this->currCategory >= mgr->categories.size())
+							this->currCategory = 0;
 
-					//
+					};
 
 				break;
 
