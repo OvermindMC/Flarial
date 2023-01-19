@@ -6,7 +6,7 @@ public:
 	bool selectedCategory = false, selectedMod = false;
 	int currCategory = 0, currModule = 0;
 public:
-	float alpha = 0.f;
+	float fontSize = 1.f, alpha = 0.f;
 	int renderFrame = 0;
 public:
 	TabGui(Manager* mgr) : Module(mgr->categories[CategoryType::RENDER], "TabGui") {
@@ -41,6 +41,16 @@ public:
 
 			args->ctx->drawText(font, client->name, startPos, Color(255.f, 255.f, 255.f, alpha), 1.f);
 			args->ctx->flushText(0.f);
+
+			auto categories = std::vector<std::pair<CategoryType, Category*>>(mgr->categories.begin(), mgr->categories.end());
+			std::sort(categories.begin(), categories.end(), [&](const std::pair<CategoryType, Category*>& p1, const std::pair<CategoryType, Category*>& p2) {
+
+				auto nameA = p1.second->getName();
+				auto nameB = p2.second->getName();
+				
+				return args->ctx->getTextLength(font, &nameA, fontSize, false) > args->ctx->getTextLength(font, &nameB, fontSize, false);
+
+			});
 
 		});
 
