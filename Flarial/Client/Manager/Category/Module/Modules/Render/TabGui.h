@@ -87,7 +87,7 @@ public:
 
 				};
 
-				args->ctx->drawText(font, category->getName(), textPos, Color(), fontSize);
+				args->ctx->drawText(font, category->getName(), textPos, Color(255.f, 255.f, 255.f, alpha), fontSize);
 				I++;
 
 			};
@@ -124,7 +124,7 @@ public:
 
 						};
 
-						args->ctx->drawText(font, mod->name, textPos, Color(), fontSize);
+						args->ctx->drawText(font, mod->name, textPos, mod->isEnabled ? Color(40.f, 160.f, 160.f, alpha) : Color(255.f, 255.f, 255.f, alpha), fontSize);
 						I++;
 
 					};
