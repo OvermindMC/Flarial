@@ -10,7 +10,7 @@ public:
 	int renderFrame = 0;
 public:
 	float selCatAnimOff = 0.f, selModAnimOff = 0.f;
-	float animModifier = .04f;
+	float animModifier = .7f;
 public:
 	std::vector<std::pair<CategoryType, Category*>> categories;
 public:
@@ -79,8 +79,8 @@ public:
 
 					Utils::reachOff(&this->selCatAnimOff, categoryRect.z - 1.f, this->animModifier);
 
-					auto yOff = textPos.y + (fontSize * 9.8f);
-					args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff - 1.f, this->selCatAnimOff, yOff), Color(30.f, 70.f, 80.f, alpha - 2.f));
+					auto yOff = textPos.y + (fontSize * 10.f);
+					args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff - 1.f, this->selCatAnimOff, yOff), Color(50.f, 125.f, 168.f, alpha - .2f));
 
 				};
 
@@ -137,9 +137,11 @@ public:
 
 					if (this->selectedMod) {
 						this->selectedMod = false;
+						this->selModAnimOff = 0.f;
 					}
 					else if (this->selectedCategory) {
 						this->selectedCategory = false;
+						this->selCatAnimOff = 0.f;
 					};
 
 				break;
@@ -152,6 +154,7 @@ public:
 							this->currModule = category->modules.size();
 
 						this->currModule--;
+						this->selModAnimOff = 0.f;
 
 					}
 					else if (this->selectedCategory) {
@@ -160,6 +163,7 @@ public:
 							this->currCategory = mgr->categories.size();
 
 						this->currCategory--;
+						this->selCatAnimOff = 0.f;
 
 					};
 
@@ -170,6 +174,7 @@ public:
 					if (this->selectedMod) {
 
 						this->currModule++;
+						this->selModAnimOff = 0.f;
 
 						if (this->currModule >= category->modules.size())
 							this->currModule = 0;
@@ -178,6 +183,7 @@ public:
 					else if (this->selectedCategory) {
 
 						this->currCategory++;
+						this->selCatAnimOff = 0.f;
 
 						if (this->currCategory >= mgr->categories.size())
 							this->currCategory = 0;
