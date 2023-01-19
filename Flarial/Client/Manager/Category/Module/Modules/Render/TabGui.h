@@ -35,7 +35,7 @@ public:
 			if (instance == nullptr || font == nullptr)
 				return;
 
-			Utils::reachOff(&alpha, (mcGame->canUseKeys ? 1.f : 0.f), 0.05f);
+			Utils::reachOff(&alpha, (mcGame->canUseKeys ? 1.f : 0.f), 0.02f);
 			
 			if (alpha <= 0.f)
 				return;
