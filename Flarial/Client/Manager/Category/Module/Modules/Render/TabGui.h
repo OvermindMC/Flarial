@@ -17,10 +17,10 @@ public:
 
 			this->renderFrame++;
 			
-			if(this->renderFrame < 3)
+			if(this->renderFrame >= 2)
+				this->renderFrame = 0;
+			else
 				return;
-
-			this->renderFrame = 0;
 
 			auto instance = args->ctx->instance;
 			auto mcGame = (instance != nullptr ? instance->getMcGame() : nullptr);
@@ -51,8 +51,10 @@ public:
 
 			auto fCatName = categories.front().second->getName();
 			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false);
+			auto categoryRect = Rect(startPos.x - 2.f, startPos.x - 2.f, (startPos.x + 2.f) + categoriesW, startPos.y + (categories.size() * ((fontSize * 10.f)) + ((fontSize * 10.f) + 2.f)));
 
-			args->ctx->fillRectangle(Rect(startPos.x - 2.f, startPos.x - 2.f, (startPos.x + 2.f) + categoriesW, startPos.y + (categories.size() * ((fontSize * 10.f)) + ((fontSize * 10.f) + 2.f))), Color(60.f, 70.f, 80.f, alpha - .4f));
+			args->ctx->fillRectangle(categoryRect, Color(60.f, 70.f, 80.f, alpha - .2f));
+			args->ctx->fillRectangle(Rect(categoryRect.x, categoryRect.y, categoryRect.z, startPos.y + (fontSize * 10.f)), Color(30.f, 70.f, 80.f, alpha - .1f));
 			args->ctx->drawText(font, client->name, startPos, Color(255.f, 255.f, 255.f, alpha), 1.f);
 			args->ctx->flushText(0.f);
 
