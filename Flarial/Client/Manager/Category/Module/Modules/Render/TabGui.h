@@ -13,6 +13,7 @@ public:
 	float animModifier = .7f;
 public:
 	std::vector<std::pair<CategoryType, Category*>> categories;
+	std::vector<Module*> modules;
 public:
 	TabGui(Manager* mgr) : Module(mgr->categories[CategoryType::RENDER], "TabGui") {
 
@@ -58,6 +59,8 @@ public:
 
 			};
 
+			auto modules = this->categories[this->currCategory].second->modules;
+
 			auto fCatName = categories.front().second->getName();
 			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false);
 			auto categoryRect = Rect(startPos.x - 2.f, startPos.x - 2.f, (startPos.x + 2.f) + categoriesW, startPos.y + (categories.size() * ((fontSize * 10.f)) + ((fontSize * 10.f) + 2.f)));
@@ -85,8 +88,36 @@ public:
 				};
 
 				args->ctx->drawText(font, category->getName(), textPos, Color(), fontSize);
-
 				I++;
+
+			};
+
+			if (this->selectedCategory) {
+
+				if (!modules.empty()) {
+
+					std::sort(modules.begin(), modules.end(), [&](Module* modA, Module* modB) {
+
+						return args->ctx->getTextLength(font, &modA->name, fontSize, false) > args->ctx->getTextLength(font, &modB->name, fontSize, false);
+
+					});
+
+					auto len = args->ctx->getTextLength(font, &modules.back()->name, fontSize, false);
+					auto rect = Rect(categoryRect.z, ((categoryRect.y + 2.f) + (fontSize * 10.f)) + (currCategory * (fontSize * 10.f)), (categoryRect.z + 4.f) + len, ((categoryRect.y + 2.f) + (fontSize * 10.f)) + (currCategory * (fontSize * 10.f)) + (modules.size() * (fontSize * 10.f)) + 2.f);
+
+					args->ctx->fillRectangle(rect, Color(60.f, 70.f, 80.f, alpha - .2f));
+
+					I = 0;
+					for (auto mod : modules) {
+
+						auto textPos = Vec2<float>(rect.x + 2.f, (rect.y + (I * (fontSize * 10.f))));
+
+						args->ctx->drawText(font, mod->name, textPos, Color(), fontSize);
+						I++;
+
+					};
+
+				};
 
 			};
 
