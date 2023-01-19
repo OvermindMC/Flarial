@@ -39,9 +39,6 @@ public:
 
 			auto startPos = Vec2<float>(10.f, 10.f);
 
-			args->ctx->drawText(font, client->name, startPos, Color(255.f, 255.f, 255.f, alpha), 1.f);
-			args->ctx->flushText(0.f);
-
 			auto categories = std::vector<std::pair<CategoryType, Category*>>(mgr->categories.begin(), mgr->categories.end());
 			std::sort(categories.begin(), categories.end(), [&](const std::pair<CategoryType, Category*>& p1, const std::pair<CategoryType, Category*>& p2) {
 
@@ -51,6 +48,25 @@ public:
 				return args->ctx->getTextLength(font, &nameA, fontSize, false) > args->ctx->getTextLength(font, &nameB, fontSize, false);
 
 			});
+
+			auto fCatName = categories.front().second->getName();
+			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false);
+
+			args->ctx->fillRectangle(Rect(startPos.x - 2.f, startPos.x - 2.f, (startPos.x + 2.f) + categoriesW, startPos.y + (categories.size() * ((fontSize * 10.f)) + ((fontSize * 10.f) + 2.f))), Color(60.f, 70.f, 80.f, alpha - .4f));
+			args->ctx->drawText(font, client->name, startPos, Color(255.f, 255.f, 255.f, alpha), 1.f);
+			args->ctx->flushText(0.f);
+
+			auto I = 0;
+			for (auto [_, category] : categories) {
+
+				auto textPos = Vec2<float>(startPos.x, (startPos.y + (fontSize * 10.f)) + (I * (fontSize * 10.f)));
+				args->ctx->drawText(font, category->getName(), textPos, Color(), fontSize);
+
+				I++;
+
+			};
+
+			args->ctx->flushText(0.f);
 
 		});
 
