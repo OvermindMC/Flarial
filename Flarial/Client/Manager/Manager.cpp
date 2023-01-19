@@ -18,6 +18,8 @@ Manager::Manager(Client* c) {
 		auto type = (CategoryType)I;
 		this->categories[type] = new Category(this, type);
 
+		Utils::debugOutput("Initialized Category: " + this->categories[type]->getName());
+
 	};
 
 	new TabGui(this);
@@ -135,6 +137,8 @@ Manager::Manager(Client* c) {
 
 		for (auto [type, category] : this->categories)
 			category->tick();
+
+		Sleep(1);
 
 	};
 
