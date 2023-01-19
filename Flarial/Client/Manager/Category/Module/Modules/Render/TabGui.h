@@ -112,6 +112,18 @@ public:
 
 						auto textPos = Vec2<float>(rect.x + 2.f, (rect.y + (I * (fontSize * 10.f))));
 
+						if (this->selectedMod && this->currModule == I) {
+
+							if (this->selModAnimOff <= 0.f)
+								this->selModAnimOff = textPos.x + 1.f;
+
+							Utils::reachOff(&this->selModAnimOff, rect.z - 1.f, this->animModifier);
+
+							auto yOff = textPos.y + (fontSize * 10.f);
+							args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff - 1.f, this->selModAnimOff, yOff), Color(50.f, 125.f, 168.f, alpha - .2f));
+
+						};
+
 						args->ctx->drawText(font, mod->name, textPos, Color(), fontSize);
 						I++;
 
