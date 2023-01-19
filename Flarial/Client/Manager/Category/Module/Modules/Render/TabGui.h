@@ -9,6 +9,11 @@ public:
 	float fontSize = 1.f, alpha = 0.f;
 	int renderFrame = 0;
 public:
+	float selCatAnimOff = 0.f, selModAnimOff = 0.f;
+	float animModifier = .04f;
+public:
+	std::vector<std::pair<CategoryType, Category*>> categories;
+public:
 	TabGui(Manager* mgr) : Module(mgr->categories[CategoryType::RENDER], "TabGui") {
 
 		this->isEnabled = true;
@@ -39,15 +44,19 @@ public:
 
 			auto startPos = Vec2<float>(10.f, 10.f);
 
-			auto categories = std::vector<std::pair<CategoryType, Category*>>(mgr->categories.begin(), mgr->categories.end());
-			std::sort(categories.begin(), categories.end(), [&](const std::pair<CategoryType, Category*>& p1, const std::pair<CategoryType, Category*>& p2) {
+			if (this->categories.empty()) {
 
-				auto nameA = p1.second->getName();
-				auto nameB = p2.second->getName();
-				
-				return args->ctx->getTextLength(font, &nameA, fontSize, false) > args->ctx->getTextLength(font, &nameB, fontSize, false);
+				this->categories = std::vector<std::pair<CategoryType, Category*>>(mgr->categories.begin(), mgr->categories.end());
+				std::sort(categories.begin(), categories.end(), [&](const std::pair<CategoryType, Category*>& p1, const std::pair<CategoryType, Category*>& p2) {
+					
+					auto nameA = p1.second->getName();
+					auto nameB = p2.second->getName();
+					
+					return args->ctx->getTextLength(font, &nameA, fontSize, false) > args->ctx->getTextLength(font, &nameB, fontSize, false);
 
-			});
+				});
+
+			};
 
 			auto fCatName = categories.front().second->getName();
 			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false);
@@ -62,6 +71,19 @@ public:
 			for (auto [_, category] : categories) {
 
 				auto textPos = Vec2<float>(startPos.x, (startPos.y + (fontSize * 10.f)) + (I * (fontSize * 10.f)));
+
+				if (this->selectedCategory && this->currCategory == I) {
+
+					if (this->selCatAnimOff <= 0.f)
+						this->selCatAnimOff = textPos.x + 1.f;
+
+					Utils::reachOff(&this->selCatAnimOff, categoryRect.z - 1.f, this->animModifier);
+
+					auto yOff = textPos.y + (fontSize * 9.8f);
+					args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff - 1.f, this->selCatAnimOff, yOff), Color(30.f, 70.f, 80.f, alpha - 2.f));
+
+				};
+
 				args->ctx->drawText(font, category->getName(), textPos, Color(), fontSize);
 
 				I++;
@@ -88,8 +110,7 @@ public:
 			if (!isDown)
 				return;
 
-			auto mgr = this->category->manager;
-			auto category = mgr->categories[(CategoryType)this->currCategory];
+			auto category = this->categories[this->currCategory].second;
 
 			switch (key) {
 
