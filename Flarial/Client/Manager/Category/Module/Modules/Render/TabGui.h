@@ -67,7 +67,7 @@ public:
 
 			args->ctx->fillRectangle(categoryRect, Color(60.f, 70.f, 80.f, alpha - .2f));
 			args->ctx->fillRectangle(Rect(categoryRect.x, categoryRect.y, categoryRect.z, startPos.y + (fontSize * 10.f)), Color(30.f, 70.f, 80.f, alpha - .1f));
-			args->ctx->drawText(font, client->name, startPos, Color(255.f, 255.f, 255.f, alpha), 1.f);
+			args->ctx->drawText(font, client->name, startPos, Color(40.f, 105.f, 160.f, alpha), 1.f);
 			args->ctx->flushText(0.f);
 
 			auto I = 0;
