@@ -3,6 +3,9 @@
 
 enum GameType { Survival = 0, Creative = 1, Adventure = 2, Default = 5 };
 
+template<typename A, typename B>
+class AutomaticID;
+
 class Actor {
 public:
 	BUILD_ACCESS(this, Vec3<float>, renderPosition, 0x140);
@@ -275,6 +278,80 @@ public:
 	virtual auto loadLinks(class CompoundTag const&, class std::vector<class ActorLink, class std::allocator<class ActorLink>>&, class DataLoadHelper&) -> void;
 public:
 	virtual auto getEntityTypeId(void) -> enum ActorType;
+public:
+	virtual auto queryEntityRenderer(void) -> void;
+	virtual auto getSourceUniqueID(void) -> uint64_t;
+public:
+	virtual auto thawFreezeEffect(void) -> void;
+	virtual auto canFreeze(void) -> bool;
+public:
+	virtual auto isWearingLeatherArmor(void) -> bool;
+public:
+	virtual auto getLiquidAABB(enum MaterialType) -> AABB<float>;
+public:
+	virtual auto handleInsidePortal(Vec3<int>*) -> void;
+	virtual auto getPortalCooldown(void) -> __int64;
+	virtual auto getPortalWaitTime(void) -> __int64;
+public:
+	virtual auto canChangeDimensionsUsingPortal(void) -> bool;
+	virtual auto changeDimension(class AutomaticID<class Dimension, int>) -> void;
+public:
+	virtual auto getControllingPlayer(void) -> uint64_t;
+public:
+	virtual auto checkFallDamage(float, bool) -> void;
+	virtual auto causeFallDamage(float, float, class ActorDamageSource) -> void;
+	virtual auto handleFallDistanceOnServer(float, float, bool) -> void;
+public:
+	virtual auto playSynchronizedSound(enum LevelSoundEvent, Vec3<float> const&, int, bool) -> void;
+	virtual auto playSynchronizedSound(enum LevelSoundEvent, Vec3<float> const&, class Block const&, bool) -> void;
+public:
+	virtual auto onSynchedFlagUpdate(int, __int64, __int64) -> void;
+	virtual auto onSynchedDataUpdate(int) -> void;
+public:
+	virtual auto canAddPassenger(Actor*) -> bool;
+public:
+	virtual auto canPickupItem(class ItemStack*) -> bool;
+public:
+	virtual auto canBePulledIntoVehicle(void) -> bool;
+	virtual auto inCaravan(void) -> bool;
+public:
+	virtual auto isLeashableType(void) -> bool;
+	virtual auto tickLeash(void) -> void;
+public:
+	virtual auto sendMotionPacketIfNeeded(void) -> void;
+public:
+	virtual auto canSynchronizeNewEntity(void) -> bool;
+public:
+	virtual auto stopRiding(bool, bool, bool) -> void;
+public:
+	virtual auto startSwimming(void) -> void;
+	virtual auto stopSwimming(void) -> void;
+public:
+	virtual auto buildDebugInfo(std::string&) -> __int64;
+public:
+	virtual auto getCommandPermissionLevel(void) -> enum CommandPermissionLevel;
+public:
+	virtual auto isClientSide(void) -> bool;
+public:
+	virtual auto getMutableAttribute(class Attribute*) -> class AttributeInstance*;
+	virtual auto getAttribute(class Attribute*) -> class AttributeInstance*;
+public:
+	virtual auto getDeathTime(void) -> __int64;
+	virtual auto heal(int) -> void;
+public:
+	virtual auto isInvertedHealAndHarm(void) -> bool;
+public:
+	virtual auto canBeAffected(UCHAR) -> bool;
+	virtual auto canBeAffectedByArrow(class MobEffectInstance*) -> bool;
+	virtual auto onEffectAdded(class MobEffectInstance*) -> void;
+	virtual auto onEffectUpdated(class MobEffectInstance*) -> void;
+	virtual auto onEffectRemoved(class MobEffectInstance*) -> void;
+	virtual auto canObstructSpawningAndBlockPlacement(void) -> bool;
+public:
+	virtual auto getAnimationComponent(void) -> class AnimationComponent*;
+	virtual auto openContainerComponent(class Player*) -> void;
+public:
+	virtual auto swing(void) -> void;
 };
 
 enum ActorType {
