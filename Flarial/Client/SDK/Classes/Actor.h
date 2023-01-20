@@ -16,6 +16,9 @@ public:
 	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x358), AABB<float>, boundingBox, 0x0);
 public:
 	auto getHealth(void) -> int;
+public:
+	auto isHostile(void) -> bool;
+	auto isPassive(void) -> bool;
 private:
 	virtual ~Actor(void);
 public:
