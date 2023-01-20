@@ -42,3 +42,8 @@ struct KeyEvent {
 struct RenderCtxEvent {
     class MinecraftUIRenderContext* ctx;
 };
+
+struct PacketEvent {
+    bool* cancel;
+    class Packet* packet;
+};
