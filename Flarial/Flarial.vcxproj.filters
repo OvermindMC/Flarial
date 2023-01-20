@@ -39,6 +39,9 @@
     <ClCompile Include="Client\Manager\Category\Module\Module.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\SDK\Classes\Actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Utils\Utils.h">
