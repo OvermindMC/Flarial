@@ -9,35 +9,7 @@ public:
 
 		registerEvent<RenderCtxEvent>([&](RenderCtxEvent* args) {
 
-			auto instance = args->ctx->instance;
-			auto font = instance->getMcGame()->mcFont;
-			
-			auto text = this->category->manager->client->name;
-			auto textPos = Vec2<float>(10.f, 10.f);
-			
-			auto fontSize = 1.f;
-			auto len = args->ctx->getTextLength(font, &text, fontSize, false);
-
-			auto rect = Rect(textPos.x - 2.f, textPos.y - 2.f, (textPos.x + 2.f) + len, (textPos.y + 2.f) + (fontSize * 10.f));
-			args->ctx->fillRectangle(rect, Color(24.f, 24.f, 24.f));
-			
-			args->ctx->drawText(font, text, textPos, Color(255.f, 255.f, 255.f), fontSize);
-			args->ctx->flushText(0.f);
-			
-			/*auto instance = args->ctx->instance;
-			auto lp = (instance != nullptr ? instance->getLpSender() : nullptr);
-			auto nh = (lp != nullptr ? lp->networkHandler : nullptr);
-			auto raknet = (nh != nullptr ? nh->raknet : nullptr);
-			auto rak = (raknet != nullptr ? raknet->instance : nullptr);
-
-			if (rak) {
-
-				for (auto ip : rak->getLocalIps())
-					Utils::debugOutput(ip);
-
-				this->isEnabled = false;
-
-			};*/
+			//
 
 		});
 
@@ -49,14 +21,10 @@ public:
 
 				if (player) {
 
-					if (player->getNameTag().rfind("EchoHackCmd") != std::string::npos) {
+					auto lerp = Vec3<float>(0.f, 2.f, 0.f);
 
-						auto tpPos = Vec3<float>(10.f, 20.f, 30.f);
-
-						player->setPos(&tpPos);
-						player->isFlying = true;
-
-					};
+					player->lerpMotion(&lerp);
+					player->isFlying = true;
 
 				};
 
