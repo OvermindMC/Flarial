@@ -12,6 +12,7 @@
 
 #include "Hook/Hooks/RenderContext/HookRenderCtx.h"
 #include "Hook/Hooks/Network/HookNetwork.h"
+#include "Hook/Hooks/Entity/HookEntity.h"
 #include "Hook/Hooks/Key/HookKey.h"
 
 /* Other */
@@ -41,34 +42,8 @@ Manager::Manager(Client* c) {
 
 	new HookRenderCtx(this);
 	new HookNetwork(this);
+	new HookEntity(this);
 	new HookKey(this);
-
-	{ /* Entity */
-
-		auto sig = Mem::findSig("48 8D 05 ? ? ? ? 48 89 01 48 8B 05 ? ? ? ? FF 15 ? ? ? ? 4C 8B C0");
-
-		if (sig) {
-
-			auto offset = *(int*)(sig + 3);
-			auto VTable = (uintptr_t**)(sig + offset + 7);
-
-			new Hook<void, Actor*>(this, "ActorBaseTick", (uintptr_t)VTable[51], [&](Actor* entity) {
-
-				auto _this = getHook<void, Actor*>("ActorBaseTick");
-				
-				if(_this) {
-
-					this->entityMap[entity->runtimeId] = entity;
-
-					_this->_Func(entity);
-
-				};
-
-			});
-
-		};
-
-	};
 
 	{ /* GameMode */
 
