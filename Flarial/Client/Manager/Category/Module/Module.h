@@ -38,4 +38,13 @@ public:
                 ev->callback(&args);
         };
     };
+public:
+    auto forEachEntity(std::function<void(Actor*, bool)> fn) -> void {
+
+        for (auto [runtimeId, entity] : this->category->manager->entityMap) {
+            auto isRegular = (entity->getEntityTypeId() == ActorType::player || entity->isPassive() || entity->isHostile());
+            fn(entity, isRegular);
+        };
+
+    };
 };
