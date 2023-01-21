@@ -1,4 +1,5 @@
 #pragma once
+#include "GameMode.h"
 #include "PlayerInventory.h"
 
 enum GameType { Survival = 0, Creative = 1, Adventure = 2, Default = 5 };
