@@ -154,6 +154,7 @@
     <ClInclude Include="Client\Client.h" />
     <ClInclude Include="Client\Manager\Category\Category.h" />
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Combat\Killaura.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\TestMod.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Client\Mem\Mem.h" />
     <ClInclude Include="Client\SDK\Classes\Actor.h" />
     <ClInclude Include="Client\SDK\Classes\ClientInstance.h" />
+    <ClInclude Include="Client\SDK\Classes\GameMode.h" />
     <ClInclude Include="Client\SDK\Classes\GuiData.h" />
     <ClInclude Include="Client\SDK\Classes\Item.h" />
     <ClInclude Include="Client\SDK\Classes\ItemStack.h" />
