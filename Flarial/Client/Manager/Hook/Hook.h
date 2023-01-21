@@ -21,6 +21,15 @@ public:
 public:
 	const char* name;
 public:
+	Hook(Manager* mgr, const char* name, uintptr_t sig, size_t vTableIndex, std::function<T(TArgs...)> cb) {
+		
+		auto offset = *(int*)(sig + 3);
+		auto VTable = (uintptr_t**)(sig + offset + 7);
+
+		*this = Hook<T, TArgs...>(mgr, name, (uintptr_t)VTable[vTableIndex], cb);
+
+	};
+public:
 	Hook(Manager* mgr, const char* name, uintptr_t sig, std::function<T(TArgs...)> cb) {
 
 		this->manager = mgr;
