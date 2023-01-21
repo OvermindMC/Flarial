@@ -8,15 +8,16 @@
 #include <dwrite_1.h>
 #include <initguid.h>
 
+#include "../imgui/imgui_impl_win32.h"
+#include "../imgui/imgui_impl_dx12.h"
+#include "../imgui/imgui_impl_dx11.h"
+#include "../imgui/imgui.h"
+#include "../kiero/kiero.h"
+
 #pragma comment(lib, "d2d1.lib")
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dwrite.lib")
 #pragma comment(lib, "OpenGL32.lib")
-
-#include "../ImGui/imgui.h"
-#include "../ImGui/imgui_impl_win32.h"
-#include "../ImGui/imgui_impl_dx11.h"
-#include "../ImGui/imgui_impl_dx12.h"
 
 enum SwapChainDeviceType {
 	INVALID = 0, Dx11 = 1, Dx12 = 2
