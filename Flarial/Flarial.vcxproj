@@ -181,6 +181,7 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Network\HookNetwork.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\RenderContext\HookRenderCtx.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
