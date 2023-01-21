@@ -2,7 +2,7 @@
 #include "../Category.h"
 #include "../../Event/Event.h"
 
-struct ModuleEventArgs {
+struct ModuleEvent {
     bool isEnabled, isTicking;
 };
 
