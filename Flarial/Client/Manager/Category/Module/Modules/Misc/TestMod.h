@@ -13,7 +13,7 @@ public:
 
 		});
 
-		registerEvent<ModuleEventArgs>([&](ModuleEventArgs* args) {
+		registerEvent<ModuleEvent>([&](ModuleEvent* args) {
 
 			auto player = MC::getLocalPlayer();
 			
