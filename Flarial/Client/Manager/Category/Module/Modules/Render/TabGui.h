@@ -4,7 +4,7 @@
 class TabGui : public Module {
 public:
 	bool selectedCategory = false, selectedMod = false;
-	int currCategory = 0, currModule = 0;
+	size_t currCategory = 0, currModule = 0;
 public:
 	float fontSize = 1.f, alpha = 0.f;
 	int renderFrame = 0;
@@ -59,7 +59,7 @@ public:
 
 			};
 
-			auto modules = this->categories[this->currCategory].second->modules;
+			this->modules = this->categories[this->currCategory].second->modules;
 
 			auto fCatName = categories.front().second->getName();
 			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false);
@@ -163,15 +163,14 @@ public:
 						this->selectedCategory = true;
 					}
 					else {
-						if (!this->selectedMod) {
-							this->selectedMod = true;
-						}
-						else {
-							auto mod = (category != nullptr && !category->modules.empty() ? category->modules.at(this->currModule) : nullptr);
 
-							if (mod)
+						auto mod = (!this->modules.empty() ? this->modules.at(this->currModule) : nullptr);
+
+						if (!this->selectedMod)
+							this->selectedMod = true;
+						else
+							if (mod != nullptr)
 								mod->isEnabled = !mod->isEnabled;
-						};
 					};
 
 				break;
@@ -179,57 +178,59 @@ public:
 				case VK_LEFT:
 
 					if (this->selectedMod) {
-						this->selectedMod = false;
 						this->selModAnimOff = 0.f;
+						this->selectedMod = false;
+						this->currModule = 0;
 					}
 					else if (this->selectedCategory) {
-						this->selectedCategory = false;
 						this->selCatAnimOff = 0.f;
+						this->selectedCategory = false;
 					};
 
 				break;
 
 				case VK_UP:
 
-					if (this->selectedMod) {
-
-						if (this->currModule <= 0)
-							this->currModule = category->modules.size();
-
-						this->currModule--;
-						this->selModAnimOff = 0.f;
-
-					}
-					else if (this->selectedCategory) {
+					if (this->selectedCategory && !this->selectedMod) {
 
 						if (this->currCategory <= 0)
-							this->currCategory = mgr->categories.size();
+							this->currCategory = this->categories.size();
 
 						this->currCategory--;
 						this->selCatAnimOff = 0.f;
 
+					}
+					else if (this->selectedMod) {
+
+						if (this->currModule <= 0)
+							this->currModule = this->modules.size();
+
+						this->currModule--;
+						this->selModAnimOff = 0.f;
+
 					};
+
 
 				break;
 
 				case VK_DOWN:
 
-					if (this->selectedMod) {
-
-						this->currModule++;
-						this->selModAnimOff = 0.f;
-
-						if (this->currModule >= category->modules.size())
-							this->currModule = 0;
-
-					}
-					else if (this->selectedCategory) {
+					if (this->selectedCategory && !this->selectedMod) {
 
 						this->currCategory++;
 						this->selCatAnimOff = 0.f;
 
-						if (this->currCategory >= mgr->categories.size())
+						if (this->currCategory >= this->categories.size())
 							this->currCategory = 0;
+
+					}
+					else if (this->selectedMod) {
+
+						this->currModule++;
+						this->selModAnimOff = 0.f;
+
+						if (this->currModule >= this->modules.size())
+							this->currModule = 0;
 
 					};
 
