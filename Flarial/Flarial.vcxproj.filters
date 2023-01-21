@@ -113,13 +113,13 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Combat\Killaura.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Client\SDK\Classes\GameMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\SDK\Classes\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\Uninject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
