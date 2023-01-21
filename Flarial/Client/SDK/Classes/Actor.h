@@ -296,6 +296,7 @@ public:
 public:
 	virtual auto canChangeDimensionsUsingPortal(void) -> bool;
 	virtual auto changeDimension(class AutomaticID<class Dimension, int>) -> void;
+	virtual auto changeDimension(Packet*) -> void;
 public:
 	virtual auto getControllingPlayer(void) -> uint64_t;
 public:
