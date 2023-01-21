@@ -12,11 +12,11 @@ auto Module::tick(void) -> void {
 	if (this->wasEnabled != this->isEnabled) {
 
 		this->wasEnabled = this->isEnabled;
-		this->callEvent<ModuleEventArgs>(ModuleEventArgs{ this->isEnabled, false });
+		this->callEvent<ModuleEvent>(ModuleEvent{ this->isEnabled, false });
 
 	};
 
 	if(this->isEnabled)
-		this->callEvent<ModuleEventArgs>(ModuleEventArgs{ this->isEnabled, true });
+		this->callEvent<ModuleEvent>(ModuleEvent{ this->isEnabled, true });
 
 };
