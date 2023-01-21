@@ -6,6 +6,10 @@ public:
 	auto getSupplies(void) -> PlayerInventory* {
 		return *(PlayerInventory**)((uintptr_t)(this) + 0xDB8);
 	};
+public:
+	auto getGameMode(void) -> GameMode* {
+		return *(GameMode**)((uintptr_t)(this) + 0x1658);
+	};
 private:
 	virtual ~Player(void);
 public:
