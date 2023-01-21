@@ -63,7 +63,7 @@ public:
 	virtual auto isRuntimePredictedMovementEnabled(void) -> bool;
 	virtual auto getPredictedMovementValues(void) -> class PredictedMovementValues*;
 public:
-	virtual auto getPosition(void) -> Vec3<float>*;
+	virtual auto getPos(void) -> Vec3<float>*;
 	virtual auto getPosPrev(void) -> Vec3<float>*;
 	virtual auto getPosExtrapolated(float) -> const Vec3<float>;
 public:
