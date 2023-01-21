@@ -1,4 +1,5 @@
 #pragma once
+#include "RenderUtils.h"
 #include <type_traits>
 #include <filesystem>
 #include <functional>
