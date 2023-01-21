@@ -23,6 +23,8 @@ public:
 public:
 	Hook(Manager* mgr, const char* name, uintptr_t sig, std::function<T(TArgs...)> cb) {
 
+		this->manager = mgr;
+
 		this->name = name;
 		this->manager = mgr;
 		this->callback = cb;
