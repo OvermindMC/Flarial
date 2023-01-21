@@ -12,39 +12,26 @@ public:
 			auto gm = args->GM;
 			auto player = gm->player;
 			auto myPos = player->getPos();
-			auto dists = std::map<uint64_t, double>();
-			auto entities = this->category->manager->entityMap;
 
-			for (auto [runtimeId, entity] : entities) {
+			auto I = 0;
+			forEachEntity([&](Actor* entity, bool isRegular) {
 
-				if (player->runtimeId == runtimeId)
-					continue;
-
-				if (!entity->isAlive())
-					continue;
+				if(I >= 2 || !isRegular || entity->runtimeId == player->runtimeId || !entity->isAlive())
+					return;
 
 				auto pos = entity->getPos();
 				auto dist = pos->dist(*myPos);
 
-				if (dist <= 12.f)
-					dists[runtimeId] = dist;
+				if (dist >= 12.f)
+					return;
 
-			};
-
-			if (dists.empty())
-				return;
-
-			for (auto [runtimeId, dist] : dists) {
-
-				auto entity = (entities.contains(runtimeId) ? entities[runtimeId] : nullptr);
-
-				if (entity == nullptr)
-					continue;
-
+				I++;
 				player->swing();
 				gm->attack(entity);
 
-			};
+			}, [&](Actor* first, Actor* second) {
+				return first->getPos()->dist(*myPos) < second->getPos()->dist(*myPos);
+			});
 
 		});
 
