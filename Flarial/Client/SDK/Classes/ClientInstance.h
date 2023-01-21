@@ -6,8 +6,8 @@
 
 class ClientInstance {
 public:
-	auto getPlayer(void) -> LocalPlayer* {
-		return Utils::CallVFunc<24, LocalPlayer*>(this);
+	auto getPlayer(void) -> Player* {
+		return Utils::CallVFunc<24, Player*>(this);
 	};
 public:
 	auto getGuiData(void) -> GuiData* {
