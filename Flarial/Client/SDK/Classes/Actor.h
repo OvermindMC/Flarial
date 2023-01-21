@@ -281,7 +281,7 @@ public:
 	virtual auto load(class CompoundTag*, class DataLoadHelper*) -> bool;
 	virtual auto loadLinks(class CompoundTag const&, class std::vector<class ActorLink, class std::allocator<class ActorLink>>&, class DataLoadHelper&) -> void;
 public:
-	virtual auto getEntityTypeId(void) -> enum ActorType;
+	virtual auto getEntityTypeId(void) -> uint8_t;
 public:
 	virtual auto queryEntityRenderer(void) -> void;
 	virtual auto getSourceUniqueID(void) -> uint64_t;
