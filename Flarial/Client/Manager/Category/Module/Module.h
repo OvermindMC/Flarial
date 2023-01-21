@@ -39,9 +39,17 @@ public:
         };
     };
 public:
-    auto forEachEntity(std::function<void(Actor*, bool)> fn) -> void {
+    auto forEachEntity(std::function<void(Actor*, bool)> fn, std::function<bool(Actor*, Actor*)> cmp = std::function<bool(Actor*, Actor*)>()) -> void {
 
-        for (auto [runtimeId, entity] : this->category->manager->entityMap) {
+        auto entityMap = this->category->manager->entityMap;
+        auto entities = std::vector<std::pair<uint64_t, Actor*>>(entityMap.begin(), entityMap.end());
+
+        if(cmp)
+            std::sort(entities.begin(), entities.end(), [&](const std::pair<uint64_t, Actor*> first, const std::pair<uint64_t, Actor*> second) {
+                return cmp(first.second, second.second);
+            });
+        
+        for (auto [runtimeId, entity] : entities) {
             auto isRegular = (entity->getEntityTypeId() == ActorType::player || entity->isPassive() || entity->isHostile());
             fn(entity, isRegular);
         };
