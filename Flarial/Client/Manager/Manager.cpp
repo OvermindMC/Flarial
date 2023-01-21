@@ -12,6 +12,7 @@
 
 #include "Hook/Hooks/RenderContext/HookRenderCtx.h"
 #include "Hook/Hooks/Network/HookNetwork.h"
+#include "Hook/Hooks/Key/HookKey.h"
 
 /* Other */
 
@@ -40,6 +41,7 @@ Manager::Manager(Client* c) {
 
 	new HookRenderCtx(this);
 	new HookNetwork(this);
+	new HookKey(this);
 
 	{ /* Entity */
 
@@ -100,39 +102,6 @@ Manager::Manager(Client* c) {
 			});
 
 		};
-
-	};
-
-	{ /* Key Hook */
-
-		new Hook<void, uint64_t, bool>(this, "KeyHook", Mem::findSig("48 ? ? 48 ? ? ? 4C 8D 05 ? ? ? ? 89"),
-			[&](uint64_t key, bool isDown) {
-
-				auto cancel = false;
-				auto _this = getHook<void, uint64_t, bool>("KeyHook");
-			
-				if(_this) {
-
-					this->keyMap[key] = isDown;
-
-					for (auto [type, category] : this->categories) {
-
-						for (auto mod : category->modules) {
-
-							if (mod->isEnabled)
-								mod->callEvent<KeyEvent>(KeyEvent{ key, isDown, &cancel });
-
-						};
-
-					};
-
-					if(!cancel)
-						_this->_Func(key, isDown);
-
-				};
-
-			}
-		);
 
 	};
 
