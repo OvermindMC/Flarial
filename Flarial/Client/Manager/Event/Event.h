@@ -47,3 +47,7 @@ struct PacketEvent {
     bool* cancel;
     class Packet* packet;
 };
+
+struct GameModeTickEvent {
+    class GameMode* GM;
+};
