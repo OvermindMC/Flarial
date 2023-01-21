@@ -197,6 +197,9 @@
     <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Manager\Hook\Hooks\Entity\HookEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
