@@ -1,4 +1,5 @@
 #pragma once
+#include "Level.h"
 #include "GameMode.h"
 #include "PlayerInventory.h"
 
@@ -18,6 +19,8 @@ public:
 	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x350), Vec3<float>, motion, 0x18);
 	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x360), Vec3<float>, bodyRot, 0x0);
 	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x358), AABB<float>, boundingBox, 0x0);
+public:
+	auto getLevel(void) -> Level*;
 public:
 	auto getHealth(void) -> int;
 public:
