@@ -147,6 +147,26 @@ Manager::Manager(Client* c) {
 		
 				if(_this) {
 
+					auto instance = ctx->instance;
+					auto player = (instance != nullptr ? instance->getPlayer() : nullptr);
+					auto level = (player != nullptr ? player->getLevel() : nullptr);
+
+					if (level) {
+
+						for (auto [runtimeId, entity] : this->entityMap) {
+
+							if (level->getRuntimeEntity(runtimeId, false) == nullptr)
+								this->entityMap.erase(runtimeId);
+
+						};
+
+					}
+					else {
+
+						this->entityMap.clear();
+
+					};
+
 					for (auto [type, category] : this->categories) {
 
 						for (auto mod : category->modules) {
