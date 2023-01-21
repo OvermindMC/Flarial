@@ -101,6 +101,41 @@ Manager::Manager(Client* c) {
 
 	};
 
+	{ /* GameMode */
+
+		auto sig = Mem::findSig("48 8D 05 ? ? ? ? 48 8B D9 48 89 01 48 8B 89 ? ? ? ? 48 85 C9 74 11 48 8B 01 BA ? ? ? ? 48 8B 00 FF 15 ? ? ? ? 48 8B 8B ? ? ? ? 48 85 C9 74 17");
+
+		if (sig) {
+
+			auto offset = *(int*)(sig + 3);
+			auto VTable = (uintptr_t**)(sig + offset + 7);
+
+			new Hook<void, GameMode*>(this, "GameModeTick", (uintptr_t)VTable[8], [&](GameMode* GM) {
+
+				auto _this = getHook<void, GameMode*>("GameModeTick");
+
+				if(_this) {
+
+					for (auto [type, category] : this->categories) {
+
+						for (auto mod : category->modules) {
+
+							if (mod->isEnabled)
+								mod->callEvent<GameModeTickEvent>(GameModeTickEvent{ GM });
+
+						};
+					};
+
+					_this->_Func(GM);
+
+				};
+
+			});
+
+		};
+
+	};
+
 	{ /* Render Context */
 
 		new Hook<void, uintptr_t*, MinecraftUIRenderContext*>(this, "RenderContext", Mem::findSig("48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B ? 48 89 54 24 ? 4C"),
@@ -116,6 +151,7 @@ Manager::Manager(Client* c) {
 
 							if (mod->isEnabled)
 								mod->callEvent<RenderCtxEvent>(RenderCtxEvent{ ctx });
+
 						};
 					};
 
