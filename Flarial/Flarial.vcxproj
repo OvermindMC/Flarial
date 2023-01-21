@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Client.h" />
+    <ClInclude Include="Client\ImGui\Fonts\ProductSans.h" />
     <ClInclude Include="Client\ImGui\imconfig.h" />
     <ClInclude Include="Client\ImGui\imgui.h" />
     <ClInclude Include="Client\ImGui\imgui_impl_dx11.h" />
@@ -180,6 +181,8 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\Network\HookNetwork.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\RenderContext\HookRenderCtx.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\Mem\Mem.h" />
     <ClInclude Include="Client\SDK\Classes\Actor.h" />
