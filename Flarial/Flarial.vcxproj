@@ -146,6 +146,7 @@
     <ClCompile Include="Client\Manager\Manager.cpp" />
     <ClCompile Include="Client\Mem\Mem.cpp" />
     <ClCompile Include="Client\SDK\Classes\Actor.cpp" />
+    <ClCompile Include="Client\SDK\Classes\Level.cpp" />
     <ClCompile Include="Client\SDK\Minecraft.cpp" />
     <ClCompile Include="Client\Utils\Utils.cpp" />
     <ClCompile Include="Flarial.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Client\SDK\Classes\GuiData.h" />
     <ClInclude Include="Client\SDK\Classes\Item.h" />
     <ClInclude Include="Client\SDK\Classes\ItemStack.h" />
+    <ClInclude Include="Client\SDK\Classes\Level.h" />
     <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftGame.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftUIRenderContext.h" />
