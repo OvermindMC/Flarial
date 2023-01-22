@@ -11,9 +11,9 @@ public:
 public:
 	static T detourCallback(TArgs... args) {
 		if (callback)
-			callback(args...);
+			return callback(args...);
 		
-		return T{};
+		return (T)NULL;
 	};
 public:
 	static inline std::function<T(TArgs...)> callback = [&](TArgs... args) -> T { return (T)NULL; };
