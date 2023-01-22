@@ -12,7 +12,6 @@ public:
 	static T detourCallback(TArgs... args) {
 		if (callback)
 			return callback(args...);
-		
 		return (T)NULL;
 	};
 public:
