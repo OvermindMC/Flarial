@@ -157,6 +157,7 @@
     <ClCompile Include="Client\Mem\Mem.cpp" />
     <ClCompile Include="Client\SDK\Classes\Actor.cpp" />
     <ClCompile Include="Client\SDK\Classes\Level.cpp" />
+    <ClCompile Include="Client\SDK\Classes\Packet.cpp" />
     <ClCompile Include="Client\SDK\Minecraft.cpp" />
     <ClCompile Include="Client\Utils\RenderUtils.cpp" />
     <ClCompile Include="Client\Utils\Utils.cpp" />
