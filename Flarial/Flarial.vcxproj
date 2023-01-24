@@ -180,6 +180,7 @@
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\TestMod.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\Uninject.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\FreeLook.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
