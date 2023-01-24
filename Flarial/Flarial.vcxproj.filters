@@ -203,6 +203,9 @@
     <ClInclude Include="Client\Manager\Hook\Hooks\Entity\HookEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\FreeLook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
