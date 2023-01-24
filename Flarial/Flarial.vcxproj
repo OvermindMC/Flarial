@@ -157,6 +157,7 @@
     <ClCompile Include="Client\Mem\Mem.cpp" />
     <ClCompile Include="Client\SDK\Classes\Actor.cpp" />
     <ClCompile Include="Client\SDK\Classes\Level.cpp" />
+    <ClCompile Include="Client\SDK\Classes\MinecraftUIRenderContext.cpp" />
     <ClCompile Include="Client\SDK\Classes\Packet.cpp" />
     <ClCompile Include="Client\SDK\Minecraft.cpp" />
     <ClCompile Include="Client\Utils\RenderUtils.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Client\SDK\Classes\Item.h" />
     <ClInclude Include="Client\SDK\Classes\ItemStack.h" />
     <ClInclude Include="Client\SDK\Classes\Level.h" />
+    <ClInclude Include="Client\SDK\Classes\LevelRenderer.h" />
     <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftGame.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftUIRenderContext.h" />

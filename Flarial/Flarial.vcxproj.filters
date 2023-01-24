@@ -78,6 +78,9 @@
     <ClCompile Include="Client\SDK\Classes\Packet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\SDK\Classes\MinecraftUIRenderContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Utils\Utils.h">
@@ -204,6 +207,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\FreeLook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\LevelRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

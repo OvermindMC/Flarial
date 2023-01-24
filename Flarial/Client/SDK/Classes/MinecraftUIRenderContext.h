@@ -126,4 +126,6 @@ public:
         this->drawRectangle(rect.get(), color.get(), color.a, lineWidth);
 
     };
+public:
+    auto gameToScreenPos(Vec3<float> gamePos) -> Vec2<float>;
 };
