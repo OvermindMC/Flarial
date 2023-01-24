@@ -21,16 +21,8 @@ auto Category::getName(void) -> std::string {
 			return "Render";
 		break;
 
-		case CategoryType::COMBAT:
-			return "Combat";
-		break;
-
 		case CategoryType::PLAYER:
 			return "Player";
-		break;
-
-		case CategoryType::EXPLOIT:
-			return "Exploit";
 		break;
 
 		case CategoryType::WORLD:
