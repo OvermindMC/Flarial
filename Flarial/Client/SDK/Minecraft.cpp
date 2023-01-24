@@ -16,6 +16,6 @@ auto MC::getClientInstance(void) -> ClientInstance* {
 
 auto MC::getLocalPlayer(void) -> Player* {
 
-	return getClientInstance()->getPlayer();
+	return (getClientInstance() != nullptr ? getClientInstance()->getPlayer() : nullptr);
 
 };

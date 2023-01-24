@@ -2,7 +2,7 @@
 #include "../Manager.h"
 
 enum class CategoryType {
-	RENDER = 1, COMBAT = 2, PLAYER = 3, EXPLOIT = 4, WORLD = 5, MOVE = 6, MISC = 7
+	RENDER = 1, PLAYER = 2, WORLD = 3, MOVE = 4, MISC = 5
 };
 
 class Module;

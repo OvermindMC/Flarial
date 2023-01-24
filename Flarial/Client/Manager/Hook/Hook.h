@@ -11,8 +11,9 @@ public:
 public:
 	static T detourCallback(TArgs... args) {
 		if (callback)
-			return callback(args...);
-		return (T)NULL;
+			callback(args...);
+		
+		return T{};
 	};
 public:
 	static inline std::function<T(TArgs...)> callback = [&](TArgs... args) -> T { return (T)NULL; };
@@ -20,12 +21,29 @@ public:
 public:
 	const char* name;
 public:
-	Hook(Manager* mgr, const char* name, uintptr_t sig, size_t vTableIndex, std::function<T(TArgs...)> cb) {
+	Hook(Manager* mgr, const char* name, uintptr_t vtable, size_t vTableIndex, std::function<T(TArgs...)> cb) {
 		
-		auto offset = *(int*)(sig + 3);
-		auto VTable = (uintptr_t**)(sig + offset + 7);
+		auto offset = *(int*)(vtable + 3);
+		auto VTable = (uintptr_t**)(vtable + offset + 7);
 
-		*this = Hook<T, TArgs...>(mgr, name, (uintptr_t)VTable[vTableIndex], cb);
+		this->manager = mgr;
+
+		this->name = name;
+		this->manager = mgr;
+		this->callback = cb;
+		this->sig = (__int64*)vtable;
+
+		if (MH_CreateHook((void*)VTable[vTableIndex], &detourCallback, reinterpret_cast<LPVOID*>(&_Func)) != MH_OK) {
+			Utils::debugOutput("Failed to initialize [ " + std::string(name) + " ] hook!");
+			return;
+		};
+
+		std::ostringstream o;
+		o << std::hex << VTable[vTableIndex];
+
+		MH_EnableHook((void*)VTable[vTableIndex]);
+		this->manager->hooks.push_back((__int64*)this);
+		Utils::debugOutput("Successfully initialized [ " + std::string(name) + " ] hook { " + o.str() + " }");
 
 	};
 public:
@@ -38,8 +56,11 @@ public:
 		this->callback = cb;
 		this->sig = (__int64*)sig;
 
+		std::ostringstream o;
+		o << std::hex << sig;
+
 		if (MH_CreateHook((void*)sig, &detourCallback, reinterpret_cast<LPVOID*>(&_Func)) != MH_OK) {
-			Utils::debugOutput("Failed to initialize " + std::string(name) + " hook!");
+			Utils::debugOutput("Failed to initialize " + std::string(name) + " hook { " + o.str() + " }");
 			return;
 		};
 

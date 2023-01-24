@@ -51,3 +51,7 @@ struct PacketEvent {
 struct GameModeTickEvent {
     class GameMode* GM;
 };
+
+struct InterpolatorTickEvent {
+    class Actor* entity;
+};
