@@ -62,7 +62,7 @@ public:
 			this->modules = this->categories[this->currCategory].second->modules;
 
 			auto fCatName = categories.front().second->getName();
-			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false);
+			auto categoriesW = args->ctx->getTextLength(font, &fCatName, fontSize, false) + 2.f;
 			auto categoryRect = Rect(startPos.x - 2.f, startPos.x - 2.f, (startPos.x + 2.f) + categoriesW, startPos.y + (categories.size() * ((fontSize * 10.f)) + ((fontSize * 10.f) + 2.f)));
 
 			args->ctx->fillRectangle(categoryRect, Color(60.f, 70.f, 80.f, alpha - .2f));
@@ -83,11 +83,11 @@ public:
 					Utils::reachOff(&this->selCatAnimOff, categoryRect.z - 1.f, this->animModifier);
 
 					auto yOff = textPos.y + (fontSize * 10.f);
-					args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff - 1.f, this->selCatAnimOff, yOff), Color(50.f, 125.f, 168.f, alpha - .2f));
+					args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff, this->selCatAnimOff, yOff + 1.f), Color(50.f, 125.f, 168.f, alpha - .2f));
 
 				};
 
-				args->ctx->drawText(font, category->getName(), textPos, Color(255.f, 255.f, 255.f, alpha), fontSize);
+				args->ctx->drawText(font, category->getName(), Vec2<float>(textPos.x, textPos.y + 1.f), Color(255.f, 255.f, 255.f, alpha), fontSize);
 				I++;
 
 			};
@@ -102,7 +102,7 @@ public:
 
 					});
 
-					auto len = args->ctx->getTextLength(font, &modules.back()->name, fontSize, false);
+					auto len = args->ctx->getTextLength(font, &modules.back()->name, fontSize, false) + 2.f;
 					auto rect = Rect(categoryRect.z, ((categoryRect.y + 2.f) + (fontSize * 10.f)) + (currCategory * (fontSize * 10.f)), (categoryRect.z + 4.f) + len, ((categoryRect.y + 2.f) + (fontSize * 10.f)) + (currCategory * (fontSize * 10.f)) + (modules.size() * (fontSize * 10.f)) + 2.f);
 
 					args->ctx->fillRectangle(rect, Color(60.f, 70.f, 80.f, alpha - .2f));
@@ -120,11 +120,11 @@ public:
 							Utils::reachOff(&this->selModAnimOff, rect.z - 1.f, this->animModifier);
 
 							auto yOff = textPos.y + (fontSize * 10.f);
-							args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff - 1.f, this->selModAnimOff, yOff), Color(50.f, 125.f, 168.f, alpha - .2f));
+							args->ctx->fillRectangle(Rect(textPos.x - 1.f, yOff, this->selModAnimOff, yOff + 1.f), Color(50.f, 125.f, 168.f, alpha - .2f));
 
 						};
 
-						args->ctx->drawText(font, mod->name, textPos, mod->isEnabled ? Color(40.f, 160.f, 160.f, alpha) : Color(255.f, 255.f, 255.f, alpha), fontSize);
+						args->ctx->drawText(font, mod->name, Vec2<float>(textPos.x, textPos.y + 1.f), mod->isEnabled ? Color(40.f, 160.f, 160.f, alpha) : Color(255.f, 255.f, 255.f, alpha), fontSize);
 						I++;
 
 					};
