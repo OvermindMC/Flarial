@@ -20,7 +20,7 @@ public:
 		return (keyMap.contains(key) ? keyMap[key] : false);
 	};
 public:
-	Manager(Client*);
+	explicit Manager(Client*);
 public:
 	template<typename T, typename... TArgs>
 	auto getHook(const char*) -> Hook<T, TArgs...>*;
