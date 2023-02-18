@@ -28,6 +28,8 @@ public:
 				if (currScreenName.rfind("hud_screen") != std::string::npos)
 					instance->grabMouse();
 
+				moduleConfig = nullptr;
+
 			};
 
 		});
@@ -125,7 +127,7 @@ public:
 
 				/* Windows */
 
-				if (ImGui::BeginChild("Module Configs", ImVec2(120.f, 0.f), true)) {
+				if (ImGui::BeginChild("Module Configs", ImVec2(140.f, 0.f), true)) {
 
 					auto font = *ImGui::GetFont();
 					font.Scale = .6f;
@@ -141,7 +143,7 @@ public:
 
 				}; ImGui::SameLine();
 
-				if (ImGui::BeginChild("Current Window", ImVec2(ImGui::GetWindowWidth() - 170.f, 0.f), true)) {
+				if (ImGui::BeginChild("Current Window", ImVec2(ImGui::GetWindowWidth() - 120.f, 0.f), true)) {
 
 					if (currWindow == 0) {
 
@@ -164,7 +166,7 @@ public:
 
 							I++;
 
-							if (ImGui::BeginChild(std::string("Card-" + mod->name).c_str(), ImVec2((ImGui::GetWindowWidth() - 10.f) / 3.f, 150.f), true)) {
+							if (ImGui::BeginChild(std::string("Card-" + mod->name).c_str(), ImVec2((ImGui::GetWindowWidth() - 60.f) / 3.f, 150.f), true)) {
 
 								ImGui::Text(std::string(mod->icon + " " + mod->name).c_str());
 
