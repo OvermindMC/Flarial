@@ -14,11 +14,13 @@ public:
 	std::string name;
     std::string description;
 public:
+    std::string icon;
+public:
     uint64_t keybind;
 public:
 	bool wasEnabled = false, isEnabled = false;
 public:
-	Module(Category* category, std::string name, std::string description = "", uint64_t keybind = 0x0);
+	Module(Category* category, std::string name, std::string description = "", std::string ico = ICON_FA_STAR, uint64_t keybind = 0x0);
 public:
 	auto tick(void) -> void;
 public:

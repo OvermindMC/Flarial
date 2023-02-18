@@ -19,11 +19,6 @@ public:
 
 					player->setPos(Vec3<float>(100.f, 200.f, 300.f));
 
-				}
-				else {
-
-					Utils::debugOutput(":/");
-
 				};
 
 			};

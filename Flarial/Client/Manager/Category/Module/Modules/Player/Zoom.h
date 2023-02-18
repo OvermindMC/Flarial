@@ -3,7 +3,7 @@
 
 class Zoom : public Module {
 public:
-	Zoom(Manager* mgr) : Module(mgr->categories[CategoryType::PLAYER], "Zoom") {
+	Zoom(Manager* mgr) : Module(mgr->categories[CategoryType::PLAYER], "Zoom", "View things from afar as if closer", ICON_FA_BINOCULARS) {
 
 		registerEvent<ModuleEvent>([&](ModuleEvent* args) {
 

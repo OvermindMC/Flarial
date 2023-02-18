@@ -3,7 +3,7 @@
 
 class Uninject : public Module {
 public:
-	Uninject(Manager* mgr) : Module(mgr->categories[CategoryType::MISC], "Uninject") {
+	Uninject(Manager* mgr) : Module(mgr->categories[CategoryType::MISC], "Uninject", "Remove the Client from the Game", ICON_FA_CODE) {
 
 		registerEvent<ModuleEvent>([&](ModuleEvent* args) {
 

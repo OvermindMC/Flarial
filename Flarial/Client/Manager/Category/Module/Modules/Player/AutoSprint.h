@@ -3,7 +3,7 @@
 
 class AutoSprint : public Module {
 public:
-	AutoSprint(Manager* mgr) : Module(mgr->categories[CategoryType::PLAYER], "AutoSprint") {
+	AutoSprint(Manager* mgr) : Module(mgr->categories[CategoryType::PLAYER], "AutoSprint", "Sprint Automatically", ICON_FA_RUNNING) {
 
 		registerEvent<GameModeTickEvent>([&](GameModeTickEvent* args) {
 

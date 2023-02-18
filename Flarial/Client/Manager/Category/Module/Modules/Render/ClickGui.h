@@ -7,7 +7,7 @@ public:
 public:
 	Module* moduleConfig = nullptr;
 public:
-	ClickGui(Manager* mgr) : Module(mgr->categories[CategoryType::RENDER], "ClickGui", "Interact with modules via mouse", VK_INSERT) {
+	ClickGui(Manager* mgr) : Module(mgr->categories[CategoryType::RENDER], "ClickGui", "Interact with modules via mouse", ICON_FA_WRENCH, VK_INSERT) {
 
 		registerEvent<ModuleEvent>([&](ModuleEvent* args) {
 
@@ -162,7 +162,7 @@ public:
 
 							if (ImGui::BeginChild(std::string("Card-" + mod->name).c_str(), ImVec2((ImGui::GetWindowWidth() - 30.f) / 3.f, 100.f), true)) {
 
-								ImGui::Text(std::string(std::string(ICON_FA_STAR) + " " + mod->name).c_str());
+								ImGui::Text(std::string(mod->icon + " " + mod->name).c_str());
 
 								ImGui::Spacing();
 								ImGui::Spacing();
