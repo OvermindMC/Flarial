@@ -12,24 +12,22 @@ public:
 	static T detourCallback(TArgs... args) {
 		if (callback)
 			callback(args...);
-		
-		return T{};
+		return (T)NULL;
 	};
 public:
-	static inline std::function<T(TArgs...)> callback = [&](TArgs... args) -> T { return (T)NULL; };
+	static inline std::function<T(TArgs...)> callback = [&]( [[maybe_unused]] TArgs... args) -> T { return (T)NULL; };
 	__int64* sig;
 public:
 	const char* name;
 public:
-	Hook(Manager* mgr, const char* name, uintptr_t vtable, size_t vTableIndex, std::function<T(TArgs...)> cb) {
+	Hook(Manager const* mgr, const char* name, uintptr_t vtable, size_t vTableIndex, std::function<T(TArgs...)> cb) noexcept {
 		
-		auto offset = *(int*)(vtable + 3);
-		auto VTable = (uintptr_t**)(vtable + offset + 7);
+		const auto offset = *(int*)(vtable + 3);
+		const auto VTable = (uintptr_t**)(vtable + offset + 7);
 
-		this->manager = mgr;
+		this->manager = const_cast<Manager*>(mgr);
 
 		this->name = name;
-		this->manager = mgr;
 		this->callback = cb;
 		this->sig = (__int64*)vtable;
 
@@ -37,7 +35,7 @@ public:
 			Utils::debugOutput("Failed to initialize [ " + std::string(name) + " ] hook!");
 			this->manager->addNotification("[ " + std::string(name) + " ] Hook", "Failed to initialize [ " + std::string(name) + " ] hook!", ImGuiToastType_Warning);
 			return;
-		};
+		}
 
 		std::ostringstream o;
 		o << std::hex << VTable[vTableIndex];
@@ -49,7 +47,7 @@ public:
 
 	};
 public:
-	Hook(Manager* mgr, const char* name, uintptr_t sig, std::function<T(TArgs...)> cb) {
+	Hook(Manager* mgr, const char* name, uintptr_t sig, std::function<T(TArgs...)> cb) noexcept {
 
 		this->manager = mgr;
 
