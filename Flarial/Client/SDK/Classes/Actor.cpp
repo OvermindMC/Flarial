@@ -1,8 +1,20 @@
 #include "Actor.h"
 
+auto Actor::getRuntimeId(void) -> uint64_t {
+
+	using GetRuntimeId = int* (__thiscall*)(Actor*);
+	static GetRuntimeId _GetRuntimeId = 0x0;
+
+	if (_GetRuntimeId == 0x0)
+		_GetRuntimeId = (GetRuntimeId)(Mem::findSig("40 53 48 83 ec ? 48 8b 41 ? 48 8d 54 24 ? 48 8b d9 48 8b 08 8b 43 ? 89 44 24 ? e8 ? ? ? ? 48 85 c0 0f 84 ? ? ? ? 48 83 38"));
+
+	return *_GetRuntimeId(this);
+
+};
+
 auto Actor::getLevel(void) -> Level* {
 
-	return *(Level**)((uintptr_t)(this) + 0x310);
+	return *(Level**)((uintptr_t)(this) + 0x208);
 
 };
 

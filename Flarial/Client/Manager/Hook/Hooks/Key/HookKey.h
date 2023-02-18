@@ -13,10 +13,18 @@ public:
 			if(_this) {
 
 				this->manager->keyMap[key] = isDown;
+				
+				auto instance = MC::getClientInstance();
+				auto currScreen = instance->getTopScreenName();
+
+				auto canToggle = (isDown && currScreen.rfind("hud_screen") != std::string::npos);
 
 				for (auto [type, category] : this->manager->categories) {
 
 					for (auto mod : category->modules) {
+
+						if (canToggle && mod->keybind == key)
+							mod->isEnabled = !mod->isEnabled;
 
 						if (mod->isEnabled)
 							mod->callEvent<KeyEvent>(KeyEvent{ key, isDown, &cancel });

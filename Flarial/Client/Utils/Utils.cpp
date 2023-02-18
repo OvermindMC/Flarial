@@ -107,3 +107,58 @@ auto Utils::reachOff(float* x, float xOff, float modifier) -> void {
 	};
 
 };
+
+auto Utils::sanitize(std::string text) -> std::string { // https://github.com/horionclient/Horion/blob/cb636b579c27388c59c44705549263a4f9407573/Utils/Utils.cpp#L34
+	std::string out;
+	bool wasValid = true;
+
+	auto invalidChar = [](char c) {
+		return !(c >= 0 && *reinterpret_cast<unsigned char*>(&c) < 128);
+	};
+
+	for (char c : text) {
+		bool isValid = !invalidChar(c);
+		if (wasValid) {
+			if (!isValid) {
+				wasValid = false;
+			}
+			else {
+				out += c;
+			}
+		}
+		else {
+			wasValid = isValid;
+		}
+	};
+
+	return out;
+};
+
+auto Utils::toLower(std::string input) -> std::string {
+
+	std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {
+
+		return std::tolower(c);
+
+				   });
+
+	return input;
+
+};
+
+auto Utils::splitStringBy(std::string in, std::string splitBy) -> std::vector<std::string> {
+
+	auto out = std::vector<std::string>();
+
+	std::stringstream ss(in);
+	std::string segment;
+
+	while (std::getline(ss, segment, *splitBy.c_str())) {
+
+		out.push_back(segment);
+
+	};
+
+	return out;
+
+};

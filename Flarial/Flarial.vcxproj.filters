@@ -45,9 +45,6 @@
     <ClCompile Include="Client\SDK\Classes\Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Client\Kiero\Kiero.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Client\Utils\RenderUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -116,9 +113,6 @@
     <ClInclude Include="Client\Manager\Event\Event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\TestMod.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Client\Manager\Hook\Hook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -146,9 +140,6 @@
     <ClInclude Include="Client\SDK\Classes\PlayerInventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Client\SDK\Classes\GameMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -156,9 +147,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\Uninject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Client\Kiero\Kiero.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\Utils\RenderUtils.h">
@@ -210,6 +198,42 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\SDK\Classes\LevelRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\AutoSprint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\Zoom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\ClickGui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\Nametags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\ImGui\Fonts\tahoma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\ImGui\Notifications\fa_solid_900.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\ImGui\Notifications\font_awesome_5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\ImGui\Notifications\imgui_notify.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Hook\Hooks\GameMode\HookGameMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Hook\Hooks\Mouse\HookMouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Hook\Hooks\SwapChain\HookSwapChain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\MoveInputHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

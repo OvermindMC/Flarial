@@ -13,7 +13,7 @@ public:
 		if (callback)
 			callback(args...);
 		
-		return (T)NULL;
+		return T{};
 	};
 public:
 	static inline std::function<T(TArgs...)> callback = [&](TArgs... args) -> T { return (T)NULL; };
@@ -35,6 +35,7 @@ public:
 
 		if (MH_CreateHook((void*)VTable[vTableIndex], &detourCallback, reinterpret_cast<LPVOID*>(&_Func)) != MH_OK) {
 			Utils::debugOutput("Failed to initialize [ " + std::string(name) + " ] hook!");
+			this->manager->addNotification("[ " + std::string(name) + " ] Hook", "Failed to initialize [ " + std::string(name) + " ] hook!", ImGuiToastType_Warning);
 			return;
 		};
 
@@ -44,6 +45,7 @@ public:
 		MH_EnableHook((void*)VTable[vTableIndex]);
 		this->manager->hooks.push_back((__int64*)this);
 		Utils::debugOutput("Successfully initialized [ " + std::string(name) + " ] hook { " + o.str() + " }");
+		this->manager->addNotification("[ " + std::string(name) + " ] Hook", "Successfully initialized [ " + std::string(name) + " ] hook!", ImGuiToastType_Success);
 
 	};
 public:
@@ -60,12 +62,21 @@ public:
 		o << std::hex << sig;
 
 		if (MH_CreateHook((void*)sig, &detourCallback, reinterpret_cast<LPVOID*>(&_Func)) != MH_OK) {
-			Utils::debugOutput("Failed to initialize " + std::string(name) + " hook { " + o.str() + " }");
+			Utils::debugOutput("Failed to initialize [ " + std::string(name) + " ] hook!");
+			this->manager->addNotification("[ " + std::string(name) + " ] Hook", "Failed to initialize [ " + std::string(name) + " ] hook!", ImGuiToastType_Warning);
 			return;
 		};
 
 		MH_EnableHook((void*)sig);
 		this->manager->hooks.push_back((__int64*)this);
+		Utils::debugOutput("Successfully initialized [ " + std::string(name) + " ] hook { " + o.str() + " }");
+		this->manager->addNotification("[ " + std::string(name) + " ] Hook", "Successfully initialized [ " + std::string(name) + " ] hook!", ImGuiToastType_Success);
+
+	};
+public:
+	Hook(Manager* mgr) {
+		
+		this->manager = mgr;
 
 	};
 };

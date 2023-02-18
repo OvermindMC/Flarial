@@ -39,8 +39,19 @@ struct KeyEvent {
     bool* cancel;
 };
 
-struct RenderCtxEvent {
-    class MinecraftUIRenderContext* ctx;
+struct MouseEvent {
+    Vec2<short> mousePos;
+    MouseAction action;
+    bool isDown;
+    bool* cancel;
+};
+
+struct ImGuiEvent {
+    
+};
+
+struct ClickGuiModConfigEvent {
+    //
 };
 
 struct PacketEvent {
@@ -50,8 +61,4 @@ struct PacketEvent {
 
 struct GameModeTickEvent {
     class GameMode* GM;
-};
-
-struct InterpolatorTickEvent {
-    class Actor* entity;
 };

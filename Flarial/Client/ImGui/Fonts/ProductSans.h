@@ -1,8 +1,8 @@
+#pragma once
 // File: 'Product Sans Regular.ttf' (41116 bytes)
 // Exported using binary_to_compressed_c.cpp
 static const unsigned int ProductSans_compressed_size = 22700;
-static const unsigned int ProductSans_compressed_data[22700 / 4] =
-{
+static const unsigned int ProductSans_compressed_data[22700 / 4] = {
     0x0000bc57, 0x00000000, 0x9ca00000, 0x00000400, 0x01003608, 0x0d000000, 0x03008000, 0x50475000, 0x0d83534f, 0x0000cca6, 0x00005860, 0x5347583a,
     0x3f214255, 0x0000882d, 0x0000b09a, 0x534fea05, 0x836b322f, 0x00008bf4, 0x2d1f8201, 0x6d636000, 0x39297061, 0x000038d1, 0x13822406, 0x61679828,
     0x18007073, 0x3f822100, 0x55824820, 0x6c671027, 0x02fd6679, 0x2d0b82cc, 0x0000f409, 0x65681e50, 0x7f126461, 0x1b82454e, 0x0382dc20, 0x82683621,

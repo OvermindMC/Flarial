@@ -150,7 +150,6 @@
     <ClCompile Include="Client\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="Client\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Client\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="Client\Kiero\Kiero.cpp" />
     <ClCompile Include="Client\Manager\Category\Category.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Module.cpp" />
     <ClCompile Include="Client\Manager\Manager.cpp" />
@@ -167,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="Client\Client.h" />
     <ClInclude Include="Client\ImGui\Fonts\ProductSans.h" />
+    <ClInclude Include="Client\ImGui\Fonts\tahoma.h" />
     <ClInclude Include="Client\ImGui\imconfig.h" />
     <ClInclude Include="Client\ImGui\imgui.h" />
     <ClInclude Include="Client\ImGui\imgui_impl_dx11.h" />
@@ -176,19 +176,26 @@
     <ClInclude Include="Client\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Client\ImGui\imstb_textedit.h" />
     <ClInclude Include="Client\ImGui\imstb_truetype.h" />
-    <ClInclude Include="Client\Kiero\Kiero.h" />
+    <ClInclude Include="Client\ImGui\Notifications\fa_solid_900.h" />
+    <ClInclude Include="Client\ImGui\Notifications\font_awesome_5.h" />
+    <ClInclude Include="Client\ImGui\Notifications\imgui_notify.h" />
     <ClInclude Include="Client\Manager\Category\Category.h" />
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\TestMod.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\Uninject.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\AutoSprint.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\FreeLook.h" />
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\TabGui.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\Zoom.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\ClickGui.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\Nametags.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Entity\HookEntity.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\GameMode\HookGameMode.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\Mouse\HookMouse.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Network\HookNetwork.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\RenderContext\HookRenderCtx.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\SwapChain\HookSwapChain.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\Mem\Mem.h" />
     <ClInclude Include="Client\SDK\Classes\Actor.h" />
@@ -202,6 +209,7 @@
     <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftGame.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftUIRenderContext.h" />
+    <ClInclude Include="Client\SDK\Classes\MoveInputHandler.h" />
     <ClInclude Include="Client\SDK\Classes\Packet.h" />
     <ClInclude Include="Client\SDK\Classes\Player.h" />
     <ClInclude Include="Client\SDK\Classes\PlayerInventory.h" />

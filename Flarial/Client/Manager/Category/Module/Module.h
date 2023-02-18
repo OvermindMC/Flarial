@@ -12,10 +12,13 @@ public:
 	std::vector<__int64*> events;
 public:
 	std::string name;
+    std::string description;
+public:
+    uint64_t keybind;
 public:
 	bool wasEnabled = false, isEnabled = false;
 public:
-	Module(Category*, std::string);
+	Module(Category* category, std::string name, std::string description = "", uint64_t keybind = 0x0);
 public:
 	auto tick(void) -> void;
 public:
