@@ -64,10 +64,12 @@ public:
 
 			instance->releaseMouse();
 
+			auto extraXWinSpace = 200.f;
+
 			ImVec2 displaySize = ImGui::GetIO().DisplaySize;
 			ImVec2 windowSize = ImVec2(displaySize.x / 2, displaySize.y / 2);
-			ImGui::SetNextWindowPos(ImVec2((displaySize.x - windowSize.x) / 2, (displaySize.y - windowSize.y) / 2));
-			ImGui::SetNextWindowSize(windowSize);
+			ImGui::SetNextWindowPos(ImVec2(((displaySize.x - extraXWinSpace) - windowSize.x) / 2, (displaySize.y - windowSize.y) / 2));
+			ImGui::SetNextWindowSize(ImVec2(windowSize.x + extraXWinSpace, windowSize.y));
 			ImGui::SetNextWindowContentSize(ImVec2(windowSize.x, windowSize.y + 100.f));
 			
 			auto mgr = this->category->manager;
@@ -77,9 +79,11 @@ public:
 				categories.push_back(category->getName());
 
 			ImVec4 window_color = ImGui::GetStyle().Colors[ImGuiCol_WindowBg];
-			window_color.w = 0.6f;
+			window_color.w = 0.84f;
 
 			ImGui::PushStyleColor(ImGuiCol_WindowBg, window_color);
+			
+			ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 4.f);
 			ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
 
 			if (ImGui::Begin(std::string(std::string(ICON_FA_ATOM) + " " + mgr->client->name).c_str(), NULL, ImGuiWindowFlags_NoCollapse)) {
@@ -88,7 +92,7 @@ public:
 				font.Scale = 1.f;
 
 				ImGui::PushFont(&font);
-				ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 10.f);
+				ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 20.f);
 				ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(6.f, 6.f));
 				ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.23, 0.78f, 0.51, 1.0f));
 
@@ -112,7 +116,7 @@ public:
 
 				}; ImGui::SameLine();
 				
-				ImGui::SetCursorPosX(ImGui::GetWindowWidth() - (ImGui::CalcTextSize("X").x * 4.f) - ImGui::GetStyle().WindowPadding.x);
+				ImGui::SetCursorPosX(ImGui::GetWindowWidth() - (ImGui::CalcTextSize("X").x * 6.f) - ImGui::GetStyle().WindowPadding.x);
 				
 				if(ImGui::Button(" X "))
 					this->isEnabled = false;
@@ -160,7 +164,7 @@ public:
 
 							I++;
 
-							if (ImGui::BeginChild(std::string("Card-" + mod->name).c_str(), ImVec2((ImGui::GetWindowWidth() - 30.f) / 3.f, 100.f), true)) {
+							if (ImGui::BeginChild(std::string("Card-" + mod->name).c_str(), ImVec2((ImGui::GetWindowWidth() - 10.f) / 3.f, 150.f), true)) {
 
 								ImGui::Text(std::string(mod->icon + " " + mod->name).c_str());
 
@@ -212,6 +216,7 @@ public:
 
 			};
 
+			ImGui::PopStyleVar();
 			ImGui::PopStyleVar();
 			ImGui::PopStyleColor();
 
