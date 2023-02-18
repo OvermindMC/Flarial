@@ -10,6 +10,7 @@
 #include "Category/Module/Modules/Player/AutoSprint.h"
 
 #include "Category/Module/Modules/Misc/Uninject.h"
+#include "Category/Module/Modules/Misc/TestMod.h"
 
 /* Hooks */
 
@@ -40,6 +41,7 @@ Manager::Manager(Client* c) {
 	new Zoom(this);
 	new AutoSprint(this);
 	
+	new TestMod(this);
 	new Uninject(this);
 
 	MH_Initialize();
