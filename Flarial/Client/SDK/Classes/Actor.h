@@ -14,7 +14,9 @@ public:
 public:
 	AS_FIELD(uint64_t, runtimeId, getRuntimeId);
 public:
-	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x358), AABB<float>, boundingBox, 0x0);
+	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x250), AABB<float>, boundingBox, 0x0);
+public:
+	auto setPos(Vec3<float>) -> void;
 public:
 	auto getLevel(void) -> Level*;
 public:
