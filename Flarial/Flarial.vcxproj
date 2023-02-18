@@ -188,7 +188,6 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\FreeLook.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\Zoom.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\ClickGui.h" />
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\Nametags.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Entity\HookEntity.h" />

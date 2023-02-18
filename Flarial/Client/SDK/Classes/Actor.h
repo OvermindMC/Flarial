@@ -14,8 +14,6 @@ public:
 public:
 	AS_FIELD(uint64_t, runtimeId, getRuntimeId);
 public:
-	//BUILD_ACCESS(this, uint64_t, runtimeId, 0x418);
-public:
 	BUILD_ACCESS(*(uintptr_t**)((uintptr_t)(this) + 0x358), AABB<float>, boundingBox, 0x0);
 public:
 	auto getLevel(void) -> Level*;

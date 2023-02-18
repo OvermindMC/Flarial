@@ -224,7 +224,7 @@ public:
 
 				auto onRndr = [&]() {
 
-					auto instance = MC::getClientInstance();
+					/*auto instance = MC::getClientInstance();
 					auto player = (instance != nullptr ? instance->getPlayer() : nullptr);
 
 					auto level = player->getLevel();
@@ -243,7 +243,7 @@ public:
 
 						};
 
-					};
+					};*/
 
 					ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 5.f);
 					ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(43.f / 255.f, 43.f / 255.f, 43.f / 255.f, 100.f / 255.f));

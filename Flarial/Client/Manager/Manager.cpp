@@ -5,7 +5,6 @@
 /* Module Includes */
 
 #include "Category/Module/Modules/Render/ClickGui.h"
-#include "Category/Module/Modules/Render/Nametags.h"
 
 #include "Category/Module/Modules/Player/Zoom.h"
 #include "Category/Module/Modules/Player/AutoSprint.h"
@@ -37,7 +36,6 @@ Manager::Manager(Client* c) {
 	};
 
 	new ClickGui(this);
-	new Nametags(this);
 
 	new Zoom(this);
 	new AutoSprint(this);
@@ -48,8 +46,8 @@ Manager::Manager(Client* c) {
 
 	new HookSwapChain(this);
 	new HookGameMode(this);
-	/*new HookNetwork(this);*/
-	new HookEntity(this);
+	/*new HookNetwork(this);
+	new HookEntity(this);*/
 	new MouseHook(this);
 	new HookKey(this);
 
