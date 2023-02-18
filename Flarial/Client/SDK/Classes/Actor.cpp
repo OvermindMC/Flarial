@@ -12,6 +12,25 @@ auto Actor::getRuntimeId(void) -> uint64_t {
 
 };
 
+auto Actor::setPos(Vec3<float> pos) -> void {
+
+	auto bounds = this->boundingBox;
+	auto lower = bounds.lower;
+	auto upper = bounds.upper;
+
+	auto diffX = upper.x - lower.x;
+	auto diffY = upper.y - lower.y;
+
+	lower = pos;
+	
+	upper.x = lower.x + diffX;
+	upper.y = lower.y + diffY;
+	upper.z = lower.z + diffX;
+
+	this->boundingBox = AABB<float>(lower, upper);
+
+};
+
 auto Actor::getLevel(void) -> Level* {
 
 	return *(Level**)((uintptr_t)(this) + 0x208);
