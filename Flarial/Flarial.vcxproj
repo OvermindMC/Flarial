@@ -187,7 +187,6 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\Uninject.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\AutoSprint.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\FreeLook.h" />
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\Zoom.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\ClickGui.h" />
     <ClInclude Include="Client\Manager\Event\Event.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
