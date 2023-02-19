@@ -6,7 +6,6 @@
 
 #include "Category/Module/Modules/Render/ClickGui.h"
 
-#include "Category/Module/Modules/Player/Zoom.h"
 #include "Category/Module/Modules/Player/AutoSprint.h"
 
 #include "Category/Module/Modules/Misc/Uninject.h"
@@ -38,7 +37,6 @@ Manager::Manager(Client* c) {
 
 	new ClickGui(this);
 
-	new Zoom(this);
 	new AutoSprint(this);
 	
 	new TestMod(this);
