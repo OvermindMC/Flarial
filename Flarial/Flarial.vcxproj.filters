@@ -203,13 +203,7 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Player\AutoSprint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Player\Zoom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Client\Manager\Category\Module\Modules\Render\ClickGui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Client\Manager\Category\Module\Modules\Render\Nametags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\ImGui\Fonts\tahoma.h">
@@ -234,6 +228,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\SDK\Classes\MoveInputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Misc\TestMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
