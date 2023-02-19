@@ -174,8 +174,6 @@ public:
 	virtual auto getPickRadius(void) -> float;
 	virtual auto getActorRendererId(void) -> class HashedStruct*;
 	virtual auto spawnAtLocation(class ItemStack*, float) -> class ItemActor*;
-	virtual auto spawnAtLocation(class Block*, int, float) -> class ItemActor*;
-	virtual auto spawnAtLocation(class Block*, int) -> class ItemActor*;
 	virtual auto spawnAtLocation(int, int, float) -> class ItemActor*;
 	virtual auto spawnAtLocation(int, int) -> class ItemActor*;
 	virtual auto despawn(void) -> void;
@@ -262,7 +260,7 @@ public:
 	virtual auto add(class ItemStack*) -> bool;
 	virtual auto drop(class ItemStack*, bool) -> bool;
 	virtual auto getInteraction(class Player*, class ActorInteraction*, Vec3<float>*) -> bool;
-	virtual auto canDestroyBlock(Block*) -> bool;
+	virtual auto canDestroyBlock(class Block*) -> bool;
 	virtual auto setAuxValue(int) -> void;
 	virtual auto setSize(float, float) -> void;
 	virtual auto onOrphan(void) -> void;
