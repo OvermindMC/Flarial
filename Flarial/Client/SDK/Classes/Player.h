@@ -77,7 +77,6 @@ public:
 	virtual auto getAttackTime(void) -> __int64;
 	virtual auto _getWalkTargetValue(Vec3<int>) -> float;
 	virtual auto canExistWhenDisallowMob(void) -> bool;
-	virtual auto useNewAi(void) -> void;
 	virtual auto ascendLadder(void) -> void;
 	virtual auto ascendBlockByJumping(void) -> void;
 	virtual auto descendBlockByCrouching(void) -> void;
@@ -85,8 +84,7 @@ public:
 	virtual auto initBodyControl(void) -> std::unique_ptr<class BodyControl>;
 	virtual auto jumpFromGround(void) -> void;
 	virtual auto jumpFromGround(class IMobMovementProxy) -> void;
-	virtual auto updateAi(void) -> void;
-	virtual auto newServerStep(void) -> void;
+	virtual auto newServerAiStep(void) -> void;
 	virtual auto _serverAiMobStep(void) -> void;
 	virtual auto dropBags(void) -> void;
 	virtual auto tickDeath(void) -> void;
@@ -156,7 +154,6 @@ public:
 	virtual auto inventoryChanged(class Container*, int, class ItemStack*, class ItemStack*, bool) -> void;
 	virtual auto refreshContainer(class IContainerManager*) -> void;
 	virtual auto deleteContainerManager(void) -> void;
-	virtual auto setFieldOfViewModifier(float) -> void;
 	virtual auto isActorRelevant(class Actor*) -> void;
 	virtual auto isTeacher(void) -> bool;
 	virtual auto onSuspension(void) -> void;
